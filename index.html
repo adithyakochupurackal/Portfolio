@@ -6,130 +6,227 @@
     <meta name="description" content="Adithya Krishna - Junior Java Full Stack Developer Portfolio">
     <title>Adithya Krishna | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=DM+Sans:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        /* General Styles */
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background-color: #f8f9fa; /* Light gray background */
-            color: #333; /* Dark text */
+        * {
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Navbar Style */
-        nav {
-            background-color: #007bff; /* Navbar background color */
-            padding: 15px;
-            display: flex;
-            align-items: center; /* Center items vertically */
-            justify-content: space-between; /* Space between items */
-        }
-
-        nav .portfolio-title {
-            color: white;
-            font-weight: bold;
-            font-size: 1.5em; /* Adjust font size for the title */
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        /* Header */
         header {
+            padding: 2.5em 0;
             text-align: center;
-            margin: 20px 0;
+            position: relative;
         }
 
-        h1 {
+        header img {
+            width: 100px; /* Adjust size as needed */
+            height: 100px; /* Adjust size as needed */
+            border-radius: 50%; /* Make it round */
+            position: absolute;
+            top: -50px; /* Adjust to position above the title */
+            left: 50%;
+            transform: translateX(-50%);
+            border: 3px solid #29a19c; /* Optional border */
+        }
+
+        header h1 {
+            margin: 60px 0 0 0; /* Adjust margin to make space for the image */
+            font-size: 4em;
             font-family: 'Montserrat', sans-serif;
-            font-size: 2.5em;
-            margin: 0;
+            letter-spacing: 0.05em;
         }
 
-        /* Container for all cards */
+        header p {
+            font-size: 1.8em;
+            margin-top: 0.5em;
+        }
+
+        nav {
+            display: none; /* Hide by default */
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em;
+            background-color: #1c1c1c;
+        }
+
+        .menu-icon {
+            font-size: 2em;
+            cursor: pointer;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: -250px; /* Hidden off-screen */
+            background-color: #1c1c1c;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 1.2em;
+            color: #ffffff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            background-color: #575757;
+        }
+
+        .sidenav.active {
+            left: 0; /* Slide in when active */
+        }
+
+        .closebtn {
+            font-size: 2em;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+        }
+
         .container {
             max-width: 1200px;
-            display: flex;
-            flex-wrap: wrap; /* Allows wrapping of cards */
-            gap: 20px;
-            justify-content: center; /* Center the cards */
-            padding: 0 20px;
+            margin: 30px auto;
+            background-color: #1c1c1c;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
         }
 
-        /* Card Style */
-        .card {
-            flex: 1 1 300px; /* Makes cards responsive */
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            min-width: 250px; /* Minimum width for cards */
-            max-width: 350px; /* Maximum width for cards */
+        .section {
+            margin-bottom: 50px;
         }
 
-        .card h2 {
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            color: #007bff;
+        h2 {
+            color: #ffffff;
+            border-bottom: 3px solid #ffffff;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            font-size: 2.8em;
+            font-family: 'Montserrat', sans-serif;
         }
 
-        /* List Style */
+        p, ul {
+            line-height: 1.8;
+            font-size: 1.15em;
+            color: #e0e0e0;
+        }
+
         ul {
             list-style-type: none;
             padding: 0;
         }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            background-color: #fff;
-            border-top: 1px solid #ddd;
-            border-radius: 0 0 8px 8px;
-            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        ul li {
+            background-color: #333;
+            color: #fff;
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 10px;
+            border-radius: 5px;
         }
 
-        /* Media Queries for Responsive Design */
+        footer {
+            text-align: center;
+            padding: 2em;
+            background-color: #121212;
+            color: #ffffff;
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        footer .social-icons {
+            margin: 0;
+        }
+
+        footer .social-icons a {
+            margin: 0 15px;
+            color: #ffffff;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        footer .social-icons a:hover {
+            color: #29a19c;
+        }
+
         @media (max-width: 768px) {
-            .card {
-                flex: 1 1 100%; /* Full width on smaller screens */
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 3em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            nav {
+                display: block; /* Show nav for mobile */
+            }
+
+            .navbar {
+                justify-content: flex-end;
             }
         }
     </style>
 </head>
 <body>
 
-<nav>
-    <div class="portfolio-title">Portfolio</div> <!-- Portfolio Title -->
-    <div>
-        <a href="#about">About Me</a>
-        <a href="#education">Education</a>
-        <a href="#experience">Work Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#contact">Contact</a>
-    </div>
-</nav>
-
 <header>
+    <img src="https://github.com/adithyakochupurackal/Portfolio/blob/main/photo.png" alt="Adithya Krishna"> <!-- Add your image URL here -->
     <h1>Adithya Krishna</h1>
     <p>Junior Java Full Stack Developer</p>
 </header>
 
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="menu-icon" onclick="toggleNav()">&#9776;</div>
+</nav>
+
+<div class="sidenav" id="mySidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#about">About Me</a>
+    <a href="#education">Education</a>
+    <a href="#experience">Work Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
+</div>
+
 <div class="container">
-    <section class="card" id="about">
+    <!-- About Me Section -->
+    <section class="section about" id="about">
         <h2>About Me</h2>
         <p>
             I am a Junior Java Full Stack Developer at UST Global based in Kochi, India, specializing in 
@@ -138,66 +235,86 @@
         </p>
     </section>
 
-    <section class="card" id="education">
+    <!-- Educational Background Section -->
+    <section class="section education" id="education">
         <h2>Education</h2>
-        <p><strong>BTECH Computer Science</strong> - APJ KTU, Kochi (August 2020 - June 2024 | GPA: 7.55)</p>
-        <p><strong>Higher Secondary (Computer Science)</strong> - Kochi, India (June 2018 - June 2020 | GPA: 9.5)</p>
-        <p><strong>10th Board</strong> - Kochi, India (June 2017 - June 2018 | GPA: 10)</p>
+        <p><strong>BTECH Computer Science</strong> - APJ KTU, Kochi</p>
+        <p>August 2020 - June 2024 | GPA: 7.55</p>
+
+        <p><strong>Higher Secondary (Computer Science)</strong> - Kochi, India</p>
+        <p>June 2018 - June 2020 | GPA: 9.5</p>
+
+        <p><strong>10th Board</strong> - Kochi, India</p>
+        <p>June 2017 - June 2018 | GPA: 10</p>
     </section>
 
-    <section class="card" id="experience">
+    <!-- Work Experience Section -->
+    <section class="section experience" id="experience">
         <h2>Work Experience</h2>
-        <p><strong>UST Global</strong> - Junior Java Full Stack Developer (October 2024 - Present)</p>
+        <p><strong>UST Global</strong> - Junior Java Full Stack Developer</p>
+        <p>October 2024 - Present</p>
         <p>Building full-stack web applications using Java, Spring Boot, React, and MongoDB.</p>
-        
-        <p><strong>Synthite Industries Private Ltd</strong> - Technical Intern (May 2023 - June 2023)</p>
+
+        <p><strong>Synthite Industries Private Ltd</strong> - Technical Intern</p>
+        <p>May 2023 - June 2023</p>
         <p>Collaborated on various technical projects, gaining significant hands-on experience in industry operations.</p>
-        
-        <p><strong>Innovation and Entrepreneurship Development Centre (MITS KOCHI)</strong> - Branding and Marketing Lead (August 2022 - June 2023)</p>
+
+        <p><strong>Innovation and Entrepreneurship Development Centre (MITS KOCHI)</strong> - Branding and Marketing Lead</p>
+        <p>August 2022 - June 2023</p>
         <p>Led marketing strategies to boost brand visibility and engagement for the IEDC initiatives.</p>
     </section>
 
-    <section class="card" id="skills">
+    <!-- Skills Section -->
+    <section class="section skills" id="skills">
         <h2>Skills</h2>
         <ul>
-            <li>Java</li>
-            <li>React</li>
-            <li>JavaScript</li>
-            <li>HTML & CSS</li>
-            <li>MongoDB</li>
-            <li>Spring Boot</li>
-            <li>Python</li>
+            <li><i class="fas fa-code"></i> Java</li>
+            <li><i class="fas fa-code"></i> Spring Boot</li>
+            <li><i class="fas fa-code"></i> React</li>
+            <li><i class="fas fa-database"></i> MongoDB</li>
+            <li><i class="fas fa-cloud"></i> AWS</li>
+            <li><i class="fas fa-laptop-code"></i> Microservices</li>
         </ul>
     </section>
 
-    <section class="card" id="projects">
+    <!-- Projects Section -->
+    <section class="section projects" id="projects">
         <h2>Projects</h2>
-        <ul>
-            <li><strong>Attendance Management System</strong> - (Python, React, MongoDB) <br>Implemented an advanced attendance system for real-time multiple face detection with 98% accuracy.</li>
-            <li><strong>AI-based Career Recommendation System</strong> - (PHP, HTML, CSS, Python) <br>Developed a data-driven system to streamline hiring recommendations for HR teams.</li>
-            <li><strong>Library Management System</strong> - (Java, MySQL) <br>Streamlined library operations with features like overdue reminders and book cataloging automation.</li>
-        </ul>
+        <p>List of projects demonstrating skills and technologies applied.</p>
     </section>
 
-    <section class="card" id="certifications">
+    <!-- Certifications Section -->
+    <section class="section certifications" id="certifications">
         <h2>Certifications</h2>
-        <ul>
-            <li><strong>MERN Full Stack</strong> - ZeroPixels (January 2024)</li>
-            <li><strong>Django and Python</strong> - ZeroPixels (June 2023)</li>
-            <li><strong>Business English Certificate</strong> - Cambridge English (June 2021)</li>
-        </ul>
+        <p>Certifications acquired in relevant fields.</p>
     </section>
 
-    <section class="card" id="contact">
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
         <h2>Contact</h2>
         <p>Email: <a href="mailto:aadithyakochupurackal@gmail.com">aadithyakochupurackal@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/adithya-krishna-in" target="_blank">linkedin.com/in/adithya-krishna-in</a></p>
+        <p>Phone: <a href="tel:+919746278695">+91 9746278695</a></p>
     </section>
 </div>
 
 <footer>
-    <p>&copy; 2024 Adithya Krishna. All rights reserved.</p>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+    <p>&copy; 2024 Adithya Krishna. All Rights Reserved.</p>
 </footer>
 
+<script>
+    function toggleNav() {
+        const sidenav = document.getElementById("mySidenav");
+        sidenav.classList.toggle("active");
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").classList.remove("active");
+    }
+</script>
 </body>
 </html>
