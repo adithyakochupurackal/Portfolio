@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Adithya Krishna - Junior Java Full Stack Developer Portfolio">
+    <title>Adithya Krishna | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=DM+Sans:wght@400&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #f8f9fa; /* Light gray background */
+            color: #333; /* Dark text */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar Style */
+        nav {
+            background-color: #007bff; /* Navbar background color */
+            padding: 15px;
+            display: flex;
+            align-items: center; /* Center items vertically */
+            justify-content: space-between; /* Space between items */
+        }
+
+        nav .portfolio-title {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5em; /* Adjust font size for the title */
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        /* Container for all cards */
+        .container {
+            max-width: 1200px;
+            display: flex;
+            flex-wrap: wrap; /* Allows wrapping of cards */
+            gap: 20px;
+            justify-content: center; /* Center the cards */
+            padding: 0 20px;
+        }
+
+        /* Card Style */
+        .card {
+            flex: 1 1 300px; /* Makes cards responsive */
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            min-width: 250px; /* Minimum width for cards */
+            max-width: 350px; /* Maximum width for cards */
+        }
+
+        .card h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #007bff;
+        }
+
+        /* List Style */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .card {
+                flex: 1 1 100%; /* Full width on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="portfolio-title">Portfolio</div> <!-- Portfolio Title -->
+    <div>
+        <a href="#about">About Me</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Work Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<header>
+    <h1>Adithya Krishna</h1>
+    <p>Junior Java Full Stack Developer</p>
+</header>
+
+<div class="container">
+    <section class="card" id="about">
+        <h2>About Me</h2>
+        <p>
+            I am a Junior Java Full Stack Developer at UST Global based in Kochi, India, specializing in 
+            Java, React, MongoDB, and Spring Boot. I thrive on building modern, efficient, and scalable web 
+            applications and continuously push myself to learn emerging technologies.
+        </p>
+    </section>
+
+    <section class="card" id="education">
+        <h2>Education</h2>
+        <p><strong>BTECH Computer Science</strong> - APJ KTU, Kochi (August 2020 - June 2024 | GPA: 7.55)</p>
+        <p><strong>Higher Secondary (Computer Science)</strong> - Kochi, India (June 2018 - June 2020 | GPA: 9.5)</p>
+        <p><strong>10th Board</strong> - Kochi, India (June 2017 - June 2018 | GPA: 10)</p>
+    </section>
+
+    <section class="card" id="experience">
+        <h2>Work Experience</h2>
+        <p><strong>UST Global</strong> - Junior Java Full Stack Developer (October 2024 - Present)</p>
+        <p>Building full-stack web applications using Java, Spring Boot, React, and MongoDB.</p>
+        
+        <p><strong>Synthite Industries Private Ltd</strong> - Technical Intern (May 2023 - June 2023)</p>
+        <p>Collaborated on various technical projects, gaining significant hands-on experience in industry operations.</p>
+        
+        <p><strong>Innovation and Entrepreneurship Development Centre (MITS KOCHI)</strong> - Branding and Marketing Lead (August 2022 - June 2023)</p>
+        <p>Led marketing strategies to boost brand visibility and engagement for the IEDC initiatives.</p>
+    </section>
+
+    <section class="card" id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>Java</li>
+            <li>React</li>
+            <li>JavaScript</li>
+            <li>HTML & CSS</li>
+            <li>MongoDB</li>
+            <li>Spring Boot</li>
+            <li>Python</li>
+        </ul>
+    </section>
+
+    <section class="card" id="projects">
+        <h2>Projects</h2>
+        <ul>
+            <li><strong>Attendance Management System</strong> - (Python, React, MongoDB) <br>Implemented an advanced attendance system for real-time multiple face detection with 98% accuracy.</li>
+            <li><strong>AI-based Career Recommendation System</strong> - (PHP, HTML, CSS, Python) <br>Developed a data-driven system to streamline hiring recommendations for HR teams.</li>
+            <li><strong>Library Management System</strong> - (Java, MySQL) <br>Streamlined library operations with features like overdue reminders and book cataloging automation.</li>
+        </ul>
+    </section>
+
+    <section class="card" id="certifications">
+        <h2>Certifications</h2>
+        <ul>
+            <li><strong>MERN Full Stack</strong> - ZeroPixels (January 2024)</li>
+            <li><strong>Django and Python</strong> - ZeroPixels (June 2023)</li>
+            <li><strong>Business English Certificate</strong> - Cambridge English (June 2021)</li>
+        </ul>
+    </section>
+
+    <section class="card" id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:aadithyakochupurackal@gmail.com">aadithyakochupurackal@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/adithya-krishna-in" target="_blank">linkedin.com/in/adithya-krishna-in</a></p>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2024 Adithya Krishna. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
