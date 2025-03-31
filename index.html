@@ -23,7 +23,7 @@
         
         body {
             font-family: 'DM Sans', sans-serif;
-            background: linear-gradient(135deg, #121212, #1c1c1c);
+            background: linear-gradient(135deg, #000000, #1a0000);
             color: #ffffff;
             line-height: 1.6;
             overflow-x: hidden;
@@ -34,13 +34,13 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(28, 28, 28, 0.85);
+            background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(12px);
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1em 2em;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
             z-index: 100;
         }
         
@@ -53,7 +53,7 @@
         }
         
         .topnav .logo:hover {
-            color: #29a19c;
+            color: #c0392b;
         }
         
         .topnav .nav-links {
@@ -81,7 +81,7 @@
             height: 2px;
             bottom: -6px;
             left: 0;
-            background-color: #29a19c;
+            background-color: #c0392b;
             transition: width 0.3s ease;
         }
         
@@ -90,14 +90,14 @@
         }
         
         .topnav .nav-links a:hover {
-            color: #29a19c;
+            color: #c0392b;
         }
         /* Download Resume Button in Nav */
         
         .download-resume {
             margin-left: 2em;
             padding: 8px 16px;
-            background-color: #29a19c;
+            background-color: #c0392b;
             color: #ffffff;
             border-radius: 5px;
             text-decoration: none;
@@ -110,76 +110,73 @@
         }
         
         .download-resume:hover {
-            background-color: #1c7a76;
+            background-color: #a83222;
             transform: scale(1.05);
         }
-        /* Hero Section with Parallax */
+        /* Hero Section with GIPHY Background */
         
         header {
             position: relative;
             height: 100vh;
+            overflow: hidden;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: url('assets/background.gif') no-repeat center center/cover;
-            overflow: hidden;
         }
+        /* Background container for the GIPHY embed */
         
-        header::before {
-            content: '';
+        .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1;
+            z-index: 0;
+            overflow: hidden;
         }
         
-        header img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 5px solid #29a19c;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        .hero-bg iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        /* Hero content over the background */
+        
+        .hero-content {
             position: relative;
             z-index: 2;
             animation: fadeInDown 1s ease-out;
         }
         
-        header h1 {
+        .hero-content img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 5px solid #c0392b;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+        }
+        
+        .hero-content h1 {
             font-size: 4.5em;
             font-family: 'Montserrat', sans-serif;
             color: #ffffff;
             margin-top: 20px;
-            z-index: 2;
-            animation: fadeInUp 1s ease-out;
         }
         
-        header p {
+        .hero-content p {
             font-size: 1.6em;
-            color: #b0b0b0;
-            z-index: 2;
-            animation: fadeInUp 1.2s ease-out;
+            color: #e0e0e0;
+            margin-top: 10px;
         }
         
         @keyframes fadeInDown {
             from {
                 opacity: 0;
                 transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
             }
             to {
                 opacity: 1;
@@ -202,7 +199,7 @@
             z-index: 101;
             top: 0;
             left: -250px;
-            background-color: #1c1c1c;
+            background-color: #000000;
             transition: 0.5s;
             padding-top: 60px;
         }
@@ -217,7 +214,7 @@
         }
         
         .sidenav a:hover {
-            background-color: #29a19c;
+            background-color: #c0392b;
         }
         
         .sidenav.active {
@@ -247,9 +244,9 @@
             max-width: 1200px;
             margin: 50px auto;
             padding: 40px;
-            background-color: #1c1c1c;
+            background-color: #000000;
             border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
         }
         /* Sections */
         
@@ -259,7 +256,7 @@
         
         h2 {
             color: #ffffff;
-            border-bottom: 3px solid #29a19c;
+            border-bottom: 3px solid #c0392b;
             padding-bottom: 10px;
             margin-bottom: 25px;
             font-size: 2.5em;
@@ -286,17 +283,17 @@
         }
         
         .skill-item {
-            background: rgba(34, 34, 34, 0.9);
+            background: rgba(34, 0, 0, 0.9);
             padding: 15px;
             border-radius: 10px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
         
         .skill-item:hover {
             transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
         }
         
         .skill-item i {
@@ -337,11 +334,11 @@
         }
         
         .project-card {
-            background: #222;
+            background: #1a0000;
             padding: 25px;
             border-radius: 15px;
             position: relative;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
             transform: perspective(1000px);
             transition: transform 0.4s, box-shadow 0.4s;
             overflow: hidden;
@@ -354,7 +351,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(41, 161, 156, 0.2), rgba(28, 122, 118, 0.1));
+            background: linear-gradient(135deg, rgba(192, 57, 43, 0.2), rgba(160, 50, 34, 0.1));
             opacity: 0;
             transition: opacity 0.4s;
             z-index: 0;
@@ -366,7 +363,7 @@
         
         .project-card:hover {
             transform: perspective(1000px) translateY(-10px) rotateX(5deg) rotateY(5deg);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
         }
         
         .project-card h3 {
@@ -399,7 +396,7 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background-color: #29a19c;
+            background-color: #c0392b;
             color: #ffffff;
             padding: 12px 15px;
             border-radius: 50%;
@@ -408,7 +405,7 @@
         }
         
         .back-to-top:hover {
-            background-color: #1c7a76;
+            background-color: #a83222;
             transform: scale(1.1);
         }
         /* Footer */
@@ -416,7 +413,7 @@
         footer {
             text-align: center;
             padding: 2em;
-            background-color: #1c1c1c;
+            background-color: #000000;
             color: #ffffff;
             margin-top: 50px;
             display: flex;
@@ -433,7 +430,7 @@
         }
         
         footer .social-icons a:hover {
-            color: #29a19c;
+            color: #c0392b;
             transform: scale(1.2);
         }
         /* Education and Contact Icons */
@@ -449,10 +446,10 @@
                 width: 90%;
                 padding: 25px;
             }
-            header h1 {
+            .hero-content h1 {
                 font-size: 3em;
             }
-            header p {
+            .hero-content p {
                 font-size: 1.3em;
             }
             h2 {
@@ -513,9 +510,16 @@
 
     <!-- Hero Section -->
     <header>
-        <img src="assets/photo.png" alt="Adithya Krishna">
-        <h1>Adithya Krishna</h1>
-        <p>Full-Stack Developer</p>
+        <!-- GIPHY Background -->
+        <div class="hero-bg">
+            <iframe src="https://giphy.com/embed/29pTScZHpOvnqnlblQ" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+        </div>
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <img src="assets/photo.png" alt="Adithya Krishna">
+            <h1>Adithya Krishna</h1>
+            <p>Full-Stack Developer</p>
+        </div>
     </header>
 
     <div class="container">
