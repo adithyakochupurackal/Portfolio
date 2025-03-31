@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,7 +93,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: url('path/to/your/background.jpg') no-repeat center center/cover;
+            background: url('https://raw.githubusercontent.com/adithyakochupurackal/Portfolio/refs/heads/main/photo.png') no-repeat center center/cover;
             overflow: hidden;
         }
 
@@ -131,6 +133,30 @@
             color: #b0b0b0;
             z-index: 2;
             animation: fadeInUp 1.2s ease-out;
+        }
+
+        /* Download Button Styling */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #29a19c;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 2;
+        }
+
+        .download-btn i {
+            margin-right: 8px;
+        }
+
+        .download-btn:hover {
+            background-color: #1c7a76;
+            transform: scale(1.05);
         }
 
         @keyframes fadeInDown {
@@ -431,6 +457,11 @@
             .projects-list, .certifications-list {
                 grid-template-columns: 1fr;
             }
+
+            .download-btn {
+                font-size: 1em;
+                padding: 8px 16px;
+            }
         }
     </style>
 </head>
@@ -465,11 +496,12 @@
 
 <div class="overlay" onclick="closeNav()"></div>
 
-<!-- Hero Section -->
+<!-- Hero Section with Download Button -->
 <header>
     <img src="https://raw.githubusercontent.com/adithyakochupurackal/Portfolio/refs/heads/main/photo.png" alt="Adithya Krishna">
     <h1>Adithya Krishna</h1>
     <p>Full-Stack Developer</p>
+    <a href="https://drive.google.com/uc?export=download&id=1tONqq5BhOT_NuCYtdIuJkNoi8fiWXWKS" class="download-btn"><i class="fas fa-download"></i> Download Resume</a>
 </header>
 
 <div class="container">
