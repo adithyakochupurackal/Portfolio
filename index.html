@@ -1,949 +1,1665 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Adithya Krishna — AI Full-Stack Developer</title>
-  <meta name="description" content="Portfolio — Adithya Krishna: AI Full-Stack Developer specializing in Gen-AI, agentic AI, RAG pipelines, and production systems." />
 
-  <!-- Fonts & Icons -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#0a0a0f">
+
+  <meta name="description" content="Adithya Krishna — Generative AI Engineer at EY GDS Consulting, specializing in RAG, agentic AI, Azure OpenAI, and enterprise AI applications.">
+
+  <title>Adithya Krishna | Generative AI Engineer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <style>
+
     :root {
-      --bg: #0a0a0f;
-      --card: #121217;
-      --muted: #a0aec0;
-      --accent: #00d4c7;
-      --accent-2: #ff4d7d;
-      --radius: 12px;
-      --max-width: 1200px;
-      --glass: rgba(255,255,255,0.02);
-      --glass-2: rgba(255,255,255,0.03);
-      --shadow: 0 8px 24px rgba(0,0,0,0.4);
+
+      --bg: #08090b;
+
+      --surface: #101216;
+
+      --surface-2: #15181d;
+
+      --text: #f3f5f7;
+
+      --muted: #969da8;
+
+      --accent: #c5f467;
+
+      --border: rgba(255,255,255,.09);
+
+      --header: rgba(8,9,11,.82);
+
+      --radius: 18px;
+
+      --max: 1160px;
+
+    }
+
+    [data-theme="light"] {
+
+      --bg: #f6f7f4;
+
+      --surface: #fff;
+
+      --surface-2: #eef0e9;
+
+      --text: #171a17;
+
+      --muted: #626a61;
+
+      --accent: #527b12;
+
+      --border: rgba(0,0,0,.1);
+
+      --header: rgba(246,247,244,.88);
+
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
     body {
-      font-family: Inter, system-ui, sans-serif;
-      background: linear-gradient(180deg, var(--bg), #08080b);
-      color: #e2e8f0;
-      min-height: 100vh;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+
+      font-family: "DM Sans", sans-serif;
+
+      background: var(--bg);
+
+      color: var(--text);
+
+      line-height: 1.7;
+
+      transition: background .25s, color .25s;
+
     }
 
-    /* Background */
-    .bg-gif {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      background-image: url('https://media.giphy.com/media/29pTScZHpOvnqnlblQ/giphy.gif');
-      background-size: cover;
-      background-position: center;
-      filter: blur(20px) brightness(0.4);
-      pointer-events: none;
-      opacity: 0.85;
-    }
-    .bg-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.7));
-      pointer-events: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
-    .site-wrap {
-      position: relative;
-      z-index: 5;
-      max-width: var(--max-width);
-      margin: 24px auto;
-      padding: 16px;
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 24px;
-    }
+    button { font: inherit; }
 
-    /* Header / Nav */
-    header.site-header {
-      grid-column: 1/-1;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-    .brand {
-      font-family: Orbitron, monospace;
-      font-weight: 600;
-      font-size: 20px;
+    .container { width: min(var(--max), calc(100% - 44px)); margin: auto; }
+
+    .muted { color: var(--muted); }
+
+    .eyebrow {
+
       color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    nav.desktop-nav {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-    }
-    nav.desktop-nav a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      padding: 8px 14px;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-    nav.desktop-nav a:hover {
-      color: #fff;
-      background: var(--glass);
-    }
-    .resume-btn {
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      padding: 10px 20px;
-      border-radius: 10px;
-      color: #0f172a;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: var(--shadow);
-      transition: all 0.3s ease;
-      z-index: 10;
-    }
-    .resume-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.5);
-      background: linear-gradient(90deg, var(--accent-2), var(--accent));
-    }
-    .resume-btn i { font-size: 14px; }
 
-    /* Mobile nav */
-    .mobile-nav { display: none; }
-    .hamburger {
-      display: none;
-      background: var(--glass);
-      border: 1px solid var(--glass);
-      padding: 10px;
-      border-radius: 8px;
-      color: var(--muted);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .hamburger:hover { background: var(--glass-2); }
-    .nav-open {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.75);
-      z-index: 40;
-      display: grid;
-      place-items: center;
-    }
-    .nav-panel {
-      background: var(--glass);
-      padding: 24px;
-      border-radius: var(--radius);
-      width: 90%;
-      max-width: 400px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-    }
-    .nav-panel nav a {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--muted);
-      text-decoration: none;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-    }
-    .nav-panel nav a:hover { color: #fff; background: var(--glass-2); }
+      font-size: .76rem;
 
-    /* Profile (left) */
-    aside.profile {
-      background: var(--glass);
-      border-radius: var(--radius);
-      padding: 24px;
-      border: 1px solid var(--glass);
-      backdrop-filter: blur(12px);
-      box-shadow: var(--shadow);
-    }
-    .avatar {
-      width: 128px;
-      height: 128px;
-      margin: 0 auto;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 2px solid var(--glass);
-    }
-    .avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .name { text-align: center; font-size: 22px; font-weight: 600; margin-top: 16px; }
-    .role { text-align: center; color: var(--muted); font-size: 14px; margin-top: 6px; font-weight: 400; }
-    .meta {
-      margin-top: 16px;
-      color: var(--muted);
-      font-size: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .meta div { display: flex; align-items: center; gap: 8px; }
-    .socials {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin-top: 16px;
-    }
-    .socials a {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      background: var(--glass);
-      display: grid;
-      place-items: center;
-      text-decoration: none;
-      color: var(--accent);
-      border: 1px solid var(--glass);
-      transition: all 0.3s ease;
-    }
-    .socials a:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-      background: var(--glass-2);
-    }
-
-    /* Content (right) */
-    section.content {
-      background: var(--glass);
-      border-radius: var(--radius);
-      padding: 24px;
-      border: 1px solid var(--glass);
-      backdrop-filter: blur(12px);
-      box-shadow: var(--shadow);
-      min-height: 50vh;
-    }
-    .hero {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      margin-bottom: 24px;
-    }
-    .hero-text { flex: 1; }
-    .greeting {
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-    }
-    .headline-wrap { margin: 10px 0; }
-    .headline {
-      font-size: 30px;
       font-weight: 700;
-      line-height: 1.3;
-      position: relative;
-      z-index: 2;
-    }
-    .headline::before, .headline::after {
-      content: attr(data-text);
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.8;
-      clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
-    }
-    .headline::before {
-      left: 2px;
-      color: var(--accent);
-      z-index: 1;
-      mix-blend-mode: screen;
-      filter: blur(1px);
-      animation: glitch-anim 2.6s infinite linear;
-    }
-    .headline::after {
-      left: -2px;
-      color: var(--accent-2);
-      z-index: 0;
-      mix-blend-mode: screen;
-      filter: blur(1px);
-      animation: glitch-anim2 3.1s infinite linear;
-    }
-    @keyframes glitch-anim {
-      0% { transform: translate(0,0); }
-      20% { transform: translate(-2px,-1px); }
-      40% { transform: translate(1px,1px); }
-      60% { transform: translate(-1px,0); }
-      80% { transform: translate(2px,-1px); }
-      100% { transform: translate(0,0); }
-    }
-    @keyframes glitch-anim2 {
-      0% { transform: translate(0,0); }
-      20% { transform: translate(1px,1px); }
-      40% { transform: translate(-1px,-1px); }
-      60% { transform: translate(1px,0); }
-      80% { transform: translate(-2px,1px); }
-      100% { transform: translate(0,0); }
-    }
 
-    .typed-sub {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 15px;
-      min-height: 22px;
-      font-weight: 400;
-    }
-    .summary {
-      color: var(--muted);
-      margin-top: 12px;
-      font-size: 14px;
-      max-width: 640px;
-      font-weight: 400;
-    }
-    .cta {
-      margin-top: 16px;
-      display: flex;
-      gap: 12px;
-    }
-    .cta a {
-      padding: 10px 16px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .cta .primary {
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      color: #0f172a;
-      box-shadow: var(--shadow);
-    }
-    .cta .secondary {
-      border: 1px solid var(--glass);
-      color: var(--muted);
-      background: var(--glass);
-    }
-    .cta a:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-
-    /* Sections */
-    .section { margin-top: 24px; }
-    .section h3 {
-      font-size: 14px;
-      margin-bottom: 12px;
-      color: var(--muted);
       text-transform: uppercase;
-      letter-spacing: 1.2px;
-      font-weight: 500;
+
+      letter-spacing: .16em;
+
+    }
+
+    /* Navigation */
+
+    .navbar {
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 100;
+
+      background: var(--header);
+
+      backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid var(--border);
+
+    }
+
+    .nav-inner {
+
+      min-height: 76px;
+
       display: flex;
+
       align-items: center;
-      gap: 8px;
-    }
 
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .skill {
-      background: var(--glass);
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 400;
-      transition: all 0.3s ease;
-    }
-    .skill:hover {
-      transform: translateY(-2px);
-      background: rgba(0,209,193,0.1);
-      color: #fff;
-    }
-
-    .projects, .education-grid, .certifications-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-    }
-    .project, .education-card, .certification-card {
-      padding: 16px;
-      border-radius: 10px;
-      background: var(--glass);
-      border: 1px solid var(--glass);
-      transition: all 0.3s ease;
-      opacity: 0;
-      transform: translateY(10px);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-    }
-    .project.show, .education-card.show, .certification-card.show { opacity: 1; transform: none; }
-    .project:hover, .education-card:hover, .certification-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.5);
-    }
-    .project h4, .education-card h4, .certification-card h4 {
-      margin-bottom: 8px;
-      font-size: 15px;
-      color: #fff;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .project p, .education-card p, .certification-card p {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-    .project .meta, .education-card .meta, .certification-card .meta {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 8px;
-      font-style: italic;
-    }
-
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .timeline-item {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-    }
-    .timeline-item .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      margin-top: 6px;
-    }
-    .timeline-item .desc {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 400;
-    }
-    .timeline-item .desc strong { color: #fff; font-weight: 600; }
-    .timeline-item ul {
-      margin-top: 8px;
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    /* Contact form */
-    .contact-card {
-      margin-top: 12px;
-      padding: 16px;
-      border-radius: 10px;
-      background: var(--glass);
-      border: 1px solid var(--glass);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    .form-row .full { grid-column: 1/-1; }
-    input, textarea, button {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      background: #0f172a;
-      border: 1px solid var(--glass);
-      color: #e2e8f0;
-      outline: none;
-      font-size: 13px;
-      font-weight: 400;
-    }
-    input:focus, textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-    }
-    input::placeholder, textarea::placeholder { color: #718096; }
-    textarea { min-height: 120px; resize: vertical; }
-    .form-note {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 8px;
-      font-weight: 400;
-    }
-    .form-actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      margin-top: 12px;
-    }
-    .form-actions button {
-      padding: 10px 16px;
-      font-weight: 600;
-    }
-    .status {
-      margin-left: 8px;
-      font-size: 13px;
-    }
-    .status.success { color: #7fe6c7; }
-    .status.error { color: #ff9aa2; }
-
-    footer {
-      grid-column: 1/-1;
-      margin-top: 20px;
-      color: var(--muted);
-      display: flex;
       justify-content: space-between;
+
+      gap: 20px;
+
+    }
+
+    .logo {
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-weight: 700;
+
+      font-size: 1.05rem;
+
+      letter-spacing: -.04em;
+
+    }
+
+    .logo span { color: var(--accent); }
+
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+
+    .nav-links a {
+
+      color: var(--muted);
+
+      font-size: .88rem;
+
+      transition: color .2s;
+
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-actions { display: flex; gap: 10px; align-items: center; }
+
+    .icon-btn, .menu-btn {
+
+      width: 42px; height: 42px;
+
+      display: grid; place-items: center;
+
+      border: 1px solid var(--border);
+
+      border-radius: 12px;
+
+      background: var(--surface);
+
+      color: var(--text);
+
+      cursor: pointer;
+
+    }
+
+    .menu-btn { display: none; }
+
+    .btn {
+
+      display: inline-flex;
+
       align-items: center;
-      font-size: 13px;
-      font-weight: 400;
+
+      justify-content: center;
+
+      gap: 9px;
+
+      border-radius: 12px;
+
+      padding: 12px 18px;
+
+      font-weight: 700;
+
+      font-size: .9rem;
+
+      transition: transform .2s, opacity .2s;
+
+      border: 1px solid transparent;
+
+      cursor: pointer;
+
     }
 
-    /* Reveal animation */
-    .reveal { opacity: 0; transform: translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease; }
-    .reveal.show, .reveal.visible { opacity: 1; transform: none; }
+    .btn:hover { transform: translateY(-2px); }
 
-    @media (max-width: 980px) {
-      .site-wrap { 
-        grid-template-columns: 1fr; 
-        padding: 16px; 
-      }
-      .content { order: 1; }
-      .profile { 
-        order: 2; 
-        margin-top: 24px;
-      }
-      .projects, .education-grid, .certifications-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .hero { flex-direction: column; }
-      nav.desktop-nav { display: none; }
-      .mobile-nav { display: block; }
-      .hamburger { display: inline-block; }
-      .resume-btn {
-        padding: 8px 16px;
-        font-size: 13px;
-      }
+    .btn-primary { background: var(--accent); color: #11160a; }
+
+    .btn-outline { border-color: var(--border); background: var(--surface); color: var(--text); }
+
+    /* Hero */
+
+    .hero { padding: 100px 0 82px; position: relative; overflow: hidden; }
+
+    .hero::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 480px; height: 480px;
+
+      right: -140px; top: -180px;
+
+      background: radial-gradient(circle, rgba(197,244,103,.10), transparent 68%);
+
+      pointer-events: none;
+
     }
+
+    .hero-grid {
+
+      display: grid;
+
+      grid-template-columns: 1.45fr .75fr;
+
+      gap: 60px;
+
+      align-items: center;
+
+      position: relative;
+
+    }
+
+    .availability {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      padding: 7px 12px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 99px;
+
+      font-size: .8rem;
+
+      color: var(--muted);
+
+      margin-bottom: 24px;
+
+    }
+
+    .status-dot {
+
+      width: 8px; height: 8px;
+
+      border-radius: 50%;
+
+      background: var(--accent);
+
+      box-shadow: 0 0 12px rgba(197,244,103,.6);
+
+    }
+
+    h1, h2, h3, h4 { font-family: "Space Grotesk", sans-serif; line-height: 1.2; }
+
+    h1 {
+
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+
+      letter-spacing: -.07em;
+
+      line-height: 1.04;
+
+      max-width: 780px;
+
+    }
+
+    h1 .highlight { color: var(--accent); }
+
+    .hero-copy {
+
+      max-width: 650px;
+
+      color: var(--muted);
+
+      font-size: 1.04rem;
+
+      margin-top: 25px;
+
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 28px; color: var(--muted); font-size: .86rem; }
+
+    .hero-meta i { color: var(--accent); margin-right: 7px; }
+
+    .profile-card {
+
+      padding: 28px;
+
+      background: linear-gradient(145deg, var(--surface-2), var(--surface));
+
+      border: 1px solid var(--border);
+
+      border-radius: 24px;
+
+      position: relative;
+
+      overflow: hidden;
+
+    }
+
+    .profile-card::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 180px; height: 180px;
+
+      right: -70px; bottom: -80px;
+
+      border-radius: 50%;
+
+      border: 1px solid var(--border);
+
+      box-shadow: 0 0 0 20px rgba(255,255,255,.015), 0 0 0 40px rgba(255,255,255,.012);
+
+      pointer-events: none;
+
+    }
+
+    .avatar {
+
+      width: 82px; height: 82px;
+
+      border-radius: 20px;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+
+      background: var(--surface-2);
+
+      margin-bottom: 20px;
+
+    }
+
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .profile-card h2 { font-size: 1.45rem; letter-spacing: -.04em; }
+
+    .profile-role { color: var(--muted); margin-top: 5px; font-size: .9rem; }
+
+    .profile-divider { border: 0; border-top: 1px solid var(--border); margin: 24px 0; }
+
+    .profile-detail { display: flex; gap: 12px; align-items: flex-start; margin: 13px 0; font-size: .88rem; }
+
+    .profile-detail i { color: var(--accent); width: 17px; margin-top: 5px; }
+
+    .social-links { display: flex; gap: 10px; margin-top: 22px; }
+
+    .social-links a {
+
+      width: 40px; height: 40px;
+
+      display: grid; place-items: center;
+
+      border: 1px solid var(--border);
+
+      border-radius: 11px;
+
+      color: var(--muted);
+
+      transition: color .2s, border-color .2s;
+
+    }
+
+    .social-links a:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* General sections */
+
+    section { padding: 76px 0; border-top: 1px solid var(--border); }
+
+    .section-heading {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: end;
+
+      gap: 20px;
+
+      margin-bottom: 34px;
+
+    }
+
+    .section-heading h2 {
+
+      font-size: clamp(2rem, 4vw, 3rem);
+
+      letter-spacing: -.06em;
+
+      margin-top: 9px;
+
+    }
+
+    .section-heading p { max-width: 430px; color: var(--muted); font-size: .92rem; }
+
+    /* Skills */
+
+    .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+    .skill-group {
+
+      padding: 24px;
+
+      border: 1px solid var(--border);
+
+      background: var(--surface);
+
+      border-radius: var(--radius);
+
+    }
+
+    .skill-group h3 { font-size: 1.06rem; margin-bottom: 18px; }
+
+    .skill-group h3 i { color: var(--accent); margin-right: 9px; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 9px; }
+
+    .tag {
+
+      padding: 7px 11px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 9px;
+
+      color: var(--muted);
+
+      font-size: .81rem;
+
+      background: var(--surface-2);
+
+    }
+
+    /* Projects */
+
+    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+
+    .project-card {
+
+      padding: 26px;
+
+      border: 1px solid var(--border);
+
+      background: var(--surface);
+
+      border-radius: var(--radius);
+
+      transition: transform .25s, border-color .25s;
+
+    }
+
+    .project-card:hover { transform: translateY(-5px); border-color: rgba(197,244,103,.4); }
+
+    .project-top { display: flex; justify-content: space-between; gap: 15px; align-items: center; margin-bottom: 20px; }
+
+    .project-icon {
+
+      width: 46px; height: 46px;
+
+      display: grid; place-items: center;
+
+      border-radius: 14px;
+
+      background: rgba(197,244,103,.1);
+
+      color: var(--accent);
+
+      font-size: 1.15rem;
+
+    }
+
+    .project-number { color: var(--muted); font-size: .78rem; }
+
+    .project-card h3 { font-size: 1.3rem; margin-bottom: 12px; letter-spacing: -.03em; }
+
+    .project-card p { color: var(--muted); font-size: .91rem; margin-bottom: 20px; }
+
+    .project-card .tags { margin-top: 20px; }
+
+    /* Experience */
+
+    .experience-list { display: flex; flex-direction: column; gap: 18px; }
+
+    .experience-card {
+
+      display: grid;
+
+      grid-template-columns: 210px 1fr;
+
+      gap: 30px;
+
+      padding: 28px;
+
+      border: 1px solid var(--border);
+
+      background: var(--surface);
+
+      border-radius: var(--radius);
+
+    }
+
+    .experience-date { color: var(--accent); font-size: .82rem; font-weight: 700; }
+
+    .experience-company { color: var(--muted); font-size: .86rem; margin-top: 8px; }
+
+    .experience-content h3 { font-size: 1.28rem; margin-bottom: 5px; }
+
+    .experience-content .team { color: var(--muted); font-size: .88rem; margin-bottom: 17px; }
+
+    .experience-content > p { color: var(--muted); font-size: .91rem; }
+
+    .experience-content ul { padding-left: 20px; margin-top: 14px; }
+
+    .experience-content li { color: var(--muted); font-size: .89rem; padding: 4px 0; }
+
+    .experience-content li strong { color: var(--text); }
+
+    /* Education and certifications */
+
+    .education-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+    .education-card {
+
+      padding: 24px;
+
+      background: var(--surface);
+
+      border: 1px solid var(--border);
+
+      border-radius: var(--radius);
+
+    }
+
+    .education-card i { color: var(--accent); font-size: 1.3rem; margin-bottom: 18px; }
+
+    .education-card h3 { font-size: 1.05rem; margin-bottom: 10px; }
+
+    .education-card p { color: var(--muted); font-size: .87rem; }
+
+    .education-card .date { margin-top: 15px; font-size: .8rem; color: var(--accent); }
+
+    /* Contact */
+
+    .contact-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 50px; }
+
+    .contact-copy h2 { font-size: clamp(2.2rem, 4vw, 3.4rem); letter-spacing: -.06em; margin: 12px 0 18px; }
+
+    .contact-copy p { color: var(--muted); }
+
+    .contact-email { display: inline-block; color: var(--accent); margin-top: 20px; overflow-wrap: anywhere; }
+
+    .contact-form {
+
+      background: var(--surface);
+
+      border: 1px solid var(--border);
+
+      border-radius: var(--radius);
+
+      padding: 26px;
+
+    }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .field.full { grid-column: 1 / -1; }
+
+    label { display: block; font-size: .82rem; margin-bottom: 7px; color: var(--muted); }
+
+    input, textarea {
+
+      width: 100%;
+
+      padding: 13px 14px;
+
+      color: var(--text);
+
+      background: var(--bg);
+
+      border: 1px solid var(--border);
+
+      border-radius: 10px;
+
+      outline: none;
+
+      font: inherit;
+
+      font-size: .9rem;
+
+    }
+
+    input:focus, textarea:focus { border-color: var(--accent); }
+
+    textarea { resize: vertical; min-height: 130px; }
+
+    .form-submit { margin-top: 17px; }
+
+    .form-status { font-size: .85rem; margin-top: 12px; color: var(--muted); }
+
+    .form-note { color: var(--muted); font-size: .76rem; margin-top: 12px; }
+
+    footer { padding: 28px 0; border-top: 1px solid var(--border); }
+
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: .82rem; }
+
+    .footer-links { display: flex; gap: 18px; }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s, transform .6s; }
+
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+
+      .reveal { opacity: 1; transform: none; }
+
+    }
+
+    @media (max-width: 900px) {
+
+      .nav-links {
+
+        display: none;
+
+        position: absolute;
+
+        top: 76px; left: 0; right: 0;
+
+        padding: 22px;
+
+        background: var(--surface);
+
+        border-bottom: 1px solid var(--border);
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 5px;
+
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links a { padding: 10px 8px; }
+
+      .menu-btn { display: grid; }
+
+      .hero { padding-top: 70px; }
+
+      .hero-grid { grid-template-columns: 1fr; gap: 35px; }
+
+      .profile-card { max-width: 540px; }
+
+      .contact-layout { grid-template-columns: 1fr; gap: 30px; }
+
+    }
+
+    @media (max-width: 650px) {
+
+      .container { width: min(100% - 30px, var(--max)); }
+
+      .nav-inner { min-height: 68px; }
+
+      .nav-links { top: 68px; }
+
+      .hero { padding: 62px 0 55px; }
+
+      h1 { font-size: clamp(2.6rem, 13vw, 4rem); }
+
+      section { padding: 58px 0; }
+
+      .section-heading { align-items: flex-start; flex-direction: column; }
+
+      .skills-layout, .project-grid, .education-grid { grid-template-columns: 1fr; }
+
+      .experience-card { grid-template-columns: 1fr; gap: 12px; padding: 22px; }
+
+      .form-grid { grid-template-columns: 1fr; }
+
+      .field.full { grid-column: auto; }
+
+      .footer-inner { flex-direction: column; }
+
+      .hero-meta { flex-direction: column; gap: 9px; }
+
+    }
+
   </style>
+
 </head>
+
 <body>
-  <div class="bg-gif" aria-hidden="true"></div>
-  <div class="bg-overlay" aria-hidden="true"></div>
 
-  <div class="site-wrap" role="main">
-    <!-- Header -->
-    <header class="site-header" role="banner">
-      <div class="brand"><i class="fas fa-code"></i> Adithya Krishna</div>
-      <nav class="desktop-nav" aria-label="Top navigation">
-        <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
-        <a href="#skills"><i class="fas fa-tools"></i> Skills</a>
-        <a href="#experience"><i class="fas fa-briefcase"></i> Experience</a>
-        <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
-        <a href="#certifications"><i class="fas fa-certificate"></i> Certifications</a>
-        <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
-        <a class="resume-btn" href="assets/resume.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Resume</a>
+  <header class="navbar">
+
+    <div class="container nav-inner">
+
+      <a class="logo" href="#home">AK<span>.</span></a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+
+        <a href="#about">About</a>
+
+        <a href="#skills">Skills</a>
+
+        <a href="#projects">Projects</a>
+
+        <a href="#experience">Experience</a>
+
+        <a href="#education">Education</a>
+
+        <a href="#contact">Contact</a>
+
       </nav>
-      <button class="hamburger" aria-label="Open menu" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
-    </header>
 
-    <!-- Mobile nav -->
-    <div id="mobileNav" class="nav-open" style="display:none" aria-hidden="true">
-      <div class="nav-panel" role="dialog" aria-label="Mobile menu">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-          <div class="brand"><i class="fas fa-code"></i> Adithya Krishna</div>
-          <button id="closeNav" class="hamburger" aria-label="Close menu"><i class="fas fa-times"></i></button>
-        </div>
-        <nav style="display:flex;flex-direction:column;gap:12px">
-          <a href="#projects" onclick="closeMobile()"><i class="fas fa-project-diagram"></i> Projects</a>
-          <a href="#skills" onclick="closeMobile()"><i class="fas fa-tools"></i> Skills</a>
-          <a href="#experience" onclick="closeMobile()"><i class="fas fa-briefcase"></i> Experience</a>
-          <a href="#education" onclick="closeMobile()"><i class="fas fa-graduation-cap"></i> Education</a>
-          <a href="#certifications" onclick="closeMobile()"><i class="fas fa-certificate"></i> Certifications</a>
-          <a href="#contact" onclick="closeMobile()"><i class="fas fa-envelope"></i> Contact</a>
-          <a class="resume-btn" href="assets/resume.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> Resume</a>
-        </nav>
+      <div class="nav-actions">
+
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle color theme" title="Toggle theme">
+
+          <i class="fas fa-sun"></i>
+
+        </button>
+
+        <a class="btn btn-primary" href="assets/resume.pdf" target="_blank" rel="noopener">
+
+          <i class="fas fa-arrow-down"></i> Resume
+
+        </a>
+
+        <button class="menu-btn" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
+
+          <i class="fas fa-bars"></i>
+
+        </button>
+
       </div>
+
     </div>
 
-    <!-- Profile (left) -->
-    <aside class="profile" aria-labelledby="profile-name">
-      <div class="avatar" role="img" aria-label="Adithya Krishna portrait">
-        <img src="assets/photo.png" alt="Adithya Krishna portrait">
-      </div>
-      <div id="profile-name" class="name">Adithya Krishna</div>
-      <div class="role">AI Full-Stack Developer • Gen-AI • Cloud</div>
-      <div class="meta" role="list">
-        <div role="listitem"><i class="fas fa-map-marker-alt"></i> Kochi, Kerala, India</div>
-        <div role="listitem"><i class="fas fa-building"></i> UST Global — Gen-AI Team</div>
-        <div role="listitem"><i class="fas fa-envelope"></i> <a href="mailto:aadithyakochupurackal@gmail.com" style="color:var(--accent);text-decoration:none">aadithyakochupurackal@gmail.com</a></div>
-      </div>
-      <div class="socials" aria-label="Social links">
-        <a href="https://github.com/adithyakochupurackal" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com/in/adithya-krishna-in" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      </div>
-      <div class="section" style="margin-top:16px">
-        <h3><i class="fas fa-tools"></i> Core Skills</h3>
-        <div class="skills" id="skills">
-          <span class="skill">Python</span>
-          <span class="skill">React / Angular</span>
-          <span class="skill">FastAPI / Spring Boot</span>
-          <span class="skill">LangChain</span>
-          <span class="skill">Azure OpenAI</span>
-          <span class="skill">Agentic AI Workflows</span>
-          <span class="skill">RAG Pipelines</span>
-          <span class="skill">Weaviate / Vector DBs</span>
-          <span class="skill">Docker / CI-CD</span>
-        </div>
-      </div>
-    </aside>
+  </header>
 
-    <!-- Content (right) -->
-    <section class="content" aria-labelledby="main-heading">
-      <div class="hero">
-        <div class="hero-text">
-          <div class="greeting">Hi — I'm Adithya</div>
-          <div class="headline-wrap">
-            <div id="mainHeadline" class="headline" data-text="Building production Gen-AI systems & agentic workflows">
-              Building production Gen-AI systems & agentic workflows
-            </div>
+  <main>
+
+    <!-- Hero -->
+
+    <section class="hero" id="home" style="border-top:0">
+
+      <div class="container hero-grid">
+
+        <div>
+
+          <div class="availability"><span class="status-dot"></span> Generative AI Engineer · Kochi, India</div>
+
+          <p class="eyebrow">Hello, I'm Adithya Krishna</p>
+
+          <h1 style="margin-top:18px">
+
+            Engineering the next generation of
+
+            <span class="highlight">AI applications.</span>
+
+          </h1>
+
+          <p class="hero-copy">
+
+            I build AI-powered applications and explore how large language models,
+
+            retrieval systems, and agentic workflows can solve real-world enterprise
+
+            problems. My work spans Python, Azure OpenAI, RAG-heavy applications,
+
+            and experimental AI engineering.
+
+          </p>
+
+          <div class="hero-actions">
+
+            <a href="#projects" class="btn btn-primary">Explore my work <i class="fas fa-arrow-right"></i></a>
+
+            <a href="#contact" class="btn btn-outline">Let's connect <i class="far fa-paper-plane"></i></a>
+
           </div>
-          <div id="typed" class="typed-sub" aria-live="polite"></div>
-          <p class="summary">I build production-grade full-stack systems embedding Gen-AI responsibly. Expertise in RAG, multi-agent orchestration, multimodal pipelines, prompt engineering, and cloud deployments with observability.</p>
-          <div class="cta">
-            <a class="primary" href="#contact"><i class="fas fa-envelope"></i> Get in touch</a>
-            <a class="secondary" href="#projects"><i class="fas fa-project-diagram"></i> See projects</a>
+
+          <div class="hero-meta">
+
+            <span><i class="fas fa-location-dot"></i> Kochi, Kerala, India</span>
+
+            <span><i class="fas fa-code"></i> Python · GenAI · RAG</span>
+
           </div>
+
         </div>
-        <div style="width:260px">
-          <div style="background:var(--glass);padding:12px;border-radius:10px;border:1px solid var(--glass);box-shadow:var(--shadow);backdrop-filter:blur(12px)">
-            <div style="font-size:13px;color:var(--muted)"><i class="fas fa-info-circle"></i> Snapshot</div>
-            <div style="margin-top:8px;font-weight:600">AI Full-Stack • Gen-AI</div>
-            <div style="margin-top:10px;color:var(--muted);font-size:13px">Open to remote & hybrid roles • Consulting</div>
+
+        <aside class="profile-card" id="about">
+
+          <div class="avatar">
+
+            <img src="assets/photo.png" alt="Adithya Krishna" onerror="this.style.display='none'">
+
           </div>
-        </div>
-      </div>
 
-      <!-- Projects -->
-      <div class="section" id="projects">
-        <h3><i class="fas fa-project-diagram"></i> Projects — Gen-AI & Agentic Systems</h3>
-        <div class="projects" id="projectsGrid">
-          <article class="project reveal">
-            <h4><i class="fas fa-robot"></i> Context-Aware Chatbot</h4>
-            <p>Contextual assistant with RAG, session memory, and explainability layer for transparent recommendations.</p>
-            <div class="meta">Tech: Azure OpenAI • LangChain • React • FastAPI</div>
-          </article>
-          <article class="project reveal">
-            <h4><i class="fas fa-video"></i> ReqSOP — Video → SOP</h4>
-            <p>Agentic pipeline converting videos to structured SOPs with transcription, segmentation, and human-in-loop review.</p>
-            <div class="meta">Tech: Azure Video Indexer • LangChain • Weaviate</div>
-          </article>
-          <article class="project reveal">
-            <h4><i class="fas fa-briefcase"></i> AI Career Recommender</h4>
-            <p>Hybrid recommender with embeddings and query-planning for personalized role suggestions and skill gaps.</p>
-            <div class="meta">Tech: OpenAI Embeddings • Weaviate • React</div>
-          </article>
-          <article class="project reveal">
-            <h4><i class="fas fa-camera"></i> Attendance System — FaceNet</h4>
-            <p>Edge + cloud real-time recognition system with secure admin dashboard for attendance analytics.</p>
-            <div class="meta">Tech: FaceNet • FastAPI • Docker • PostgreSQL</div>
-          </article>
-        </div>
-      </div>
+          <p class="eyebrow">Profile</p>
 
-      <!-- Experience -->
-      <div class="section" id="experience">
-        <h3><i class="fas fa-briefcase"></i> Experience</h3>
-        <div class="timeline">
-          <div class="timeline-item reveal">
-            <div class="dot" aria-hidden="true"></div>
-            <div class="desc">
-              <strong>UST Global — AI Full-Stack Developer</strong>
-              <p style="margin-top:8px">Oct 2024 — Present</p>
-              <p style="margin-top:8px">Building production AI systems with agentic orchestration, RAG, and multimodal pipelines.</p>
-              <ul>
-                <li><strong>Agentic flows:</strong> Multi-agent systems for task decomposition and auditing.</li>
-                <li><strong>RAG:</strong> Embedding pipelines with Weaviate for semantic search and hallucination reduction.</li>
-                <li><strong>Prompt engineering:</strong> Templates, few-shot strategies, and A/B evaluations.</li>
-                <li><strong>Multimodal:</strong> Video-to-document pipelines for enterprise SOPs.</li>
-                <li><strong>Production:</strong> APIs, microservices, CI/CD, and Docker deployments.</li>
-                <li><strong>Observability:</strong> Logging, metrics, and cost optimization.</li>
-                <li><strong>Impact:</strong> Improved content throughput and model reliability.</li>
-              </ul>
-            </div>
+          <h2 style="margin-top:8px">Adithya Krishna</h2>
+
+          <p class="profile-role">Generative AI Engineer at EY GDS Consulting</p>
+
+          <hr class="profile-divider">
+
+          <div class="profile-detail"><i class="fas fa-building"></i><span>EY GBS ET · Digital Product and Service · AI Team</span></div>
+
+          <div class="profile-detail"><i class="fas fa-brain"></i><span>Enterprise GenAI, agentic systems, and AI prototyping</span></div>
+
+          <div class="profile-detail"><i class="fas fa-envelope"></i><a href="mailto:aadithyakochupurackal@gmail.com">aadithyakochupurackal@gmail.com</a></div>
+
+          <div class="social-links">
+
+            <a href="https://github.com/adithyakochupurackal" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+
+            <a href="https://linkedin.com/in/adithya-krishna-in" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+
+            <a href="mailto:aadithyakochupurackal@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+
           </div>
-          <div class="timeline-item reveal">
-            <div class="dot" aria-hidden="true"></div>
-            <div class="desc">
-              <strong>Synthite Industries — Technical Intern</strong>
-              <p style="margin-top:8px">May 2023 — Jun 2023</p>
-              <p style="margin-top:8px">Developed backend integrations and automation scripts for industrial data.</p>
-            </div>
-          </div>
-          <div class="timeline-item reveal">
-            <div class="dot" aria-hidden="true"></div>
-            <div class="desc">
-              <strong>IEDC MITS Kochi — Branding Lead</strong>
-              <p style="margin-top:8px">Aug 2022 — Jun 2023</p>
-              <p style="margin-top:8px">Led branding and outreach for student initiatives.</p>
-            </div>
-          </div>
-        </div>
+
+        </aside>
+
       </div>
 
-      <!-- Education -->
-      <div class="section" id="education">
-        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
-        <div class="education-grid">
-          <article class="education-card reveal">
-            <h4><i class="fas fa-graduation-cap"></i> B.Tech — Computer Engineering</h4>
-            <p>APJ Abdul Kalam Technological University</p>
-            <div class="meta">2020 — 2024 • CGPA: 7.55/10 (75.55%)</div>
-          </article>
-          <article class="education-card reveal">
-            <h4><i class="fas fa-school"></i> Higher Secondary — Computer Science</h4>
-            <p>Mar Coorilose HSS</p>
-            <div class="meta">2018 — 2020 • Percentage: 94.55%</div>
-          </article>
-          <article class="education-card reveal">
-            <h4><i class="fas fa-school"></i> SSLC</h4>
-            <p>Mar Athanasius Memorial HSS</p>
-            <div class="meta">2017 — 2018 • Percentage: 100%</div>
-          </article>
-        </div>
-      </div>
-
-      <!-- Certifications -->
-      <div class="section" id="certifications">
-        <h3><i class="fas fa-certificate"></i> Certifications</h3>
-        <div class="certifications-grid">
-          <article class="certification-card reveal">
-            <h4><i class="fas fa-language"></i> Business English Certificate</h4>
-            <p>Cambridge English</p>
-            <div class="meta">June 2021</div>
-          </article>
-          <article class="certification-card reveal">
-            <h4><i class="fas fa-code"></i> MERN Full Stack</h4>
-            <p>ZeroPixels</p>
-            <div class="meta">January 2024</div>
-          </article>
-          <article class="certification-card reveal">
-            <h4><i class="fas fa-code"></i> Django & Python</h4>
-            <p>ZeroPixels</p>
-            <div class="meta">June 2023</div>
-          </article>
-        </div>
-      </div>
-
-      <!-- Contact -->
-      <div class="section" id="contact">
-        <h3><i class="fas fa-envelope"></i> Contact Me</h3>
-        <div class="contact-card">
-          <form id="contactForm" action="https://formspree.io/f/xovnozvl" method="POST" novalidate>
-            <div style="display:none">
-              <label>Leave this empty</label>
-              <input name="_gotcha" id="_gotcha" autocomplete="off" />
-            </div>
-            <div class="form-row">
-              <div>
-                <label for="name" style="display:block;margin-bottom:6px;color:var(--muted);font-size:13px"><i class="fas fa-user"></i> Full name</label>
-                <input id="name" name="name" type="text" placeholder="Your full name" required />
-              </div>
-              <div>
-                <label for="email" style="display:block;margin-bottom:6px;color:var(--muted);font-size:13px"><i class="fas fa-envelope"></i> Email</label>
-                <input id="email" name="email" type="email" placeholder="your@domain.com" required />
-              </div>
-              <div class="full">
-                <label for="subject" style="display:block;margin-bottom:6px;color:var(--muted);font-size:13px"><i class="fas fa-tag"></i> Subject</label>
-                <input id="subject" name="subject" type="text" placeholder="Short subject" required />
-              </div>
-              <div class="full">
-                <label for="message" style="display:block;margin-bottom:6px;color:var(--muted);font-size:13px"><i class="fas fa-comment"></i> Message</label>
-                <textarea id="message" name="message" placeholder="Tell me about your project" required></textarea>
-              </div>
-            </div>
-            <div class="form-actions">
-              <button type="submit" class="primary" id="submitBtn"><i class="fas fa-paper-plane"></i> Send</button>
-              <button type="button" id="mailtoFallback" class="secondary"><i class="fas fa-envelope-open"></i> Email</button>
-              <div id="formStatus" class="status" aria-live="polite"></div>
-            </div>
-            <div class="form-note"><i class="fas fa-info-circle"></i> I respond within 48 hours. Your data is private.</div>
-          </form>
-          <details style="margin-top:12px">
-            <summary style="cursor:pointer;color:var(--muted);font-size:13px"><i class="fas fa-info"></i> About the form</summary>
-            <div style="color:var(--muted);font-size:13px;margin-top:8px">
-              This form posts to Formspree. Use the email button for direct contact.
-            </div>
-          </details>
-        </div>
-      </div>
-
-      <footer>
-        <div>© 2025 Adithya Krishna</div>
-        <div style="display:flex;gap:12px">
-          <a href="https://github.com/adithyakochupurackal" target="_blank" rel="noopener" style="color:var(--muted)"><i class="fab fa-github"></i></a>
-          <a href="https://linkedin.com/in/adithya-krishna-in" target="_blank" rel="noopener" style="color:var(--muted)"><i class="fab fa-linkedin"></i></a>
-        </div>
-      </footer>
     </section>
-  </div>
+
+    <!-- Skills -->
+
+    <section id="skills">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div>
+
+            <p class="eyebrow">What I work with</p>
+
+            <h2>Technical toolkit</h2>
+
+          </div>
+
+          <p>A practical toolkit for building, experimenting with, and integrating AI capabilities into applications.</p>
+
+        </div>
+
+        <div class="skills-layout">
+
+          <article class="skill-group">
+
+            <h3><i class="fas fa-brain"></i> Generative AI</h3>
+
+            <div class="tags">
+
+              <span class="tag">Azure OpenAI</span><span class="tag">LLMs</span>
+
+              <span class="tag">RAG Pipelines</span><span class="tag">Agentic AI</span>
+
+              <span class="tag">Prompt Engineering</span><span class="tag">GitHub Copilot</span>
+
+              <span class="tag">Embeddings</span><span class="tag">Vector Databases</span>
+
+            </div>
+
+          </article>
+
+          <article class="skill-group">
+
+            <h3><i class="fas fa-code"></i> Engineering</h3>
+
+            <div class="tags">
+
+              <span class="tag">Python</span><span class="tag">FastAPI</span>
+
+              <span class="tag">REST APIs</span><span class="tag">React</span>
+
+              <span class="tag">JavaScript</span><span class="tag">Node.js</span>
+
+              <span class="tag">MongoDB</span><span class="tag">MySQL</span>
+
+            </div>
+
+          </article>
+
+          <article class="skill-group">
+
+            <h3><i class="fas fa-cloud"></i> Cloud & Delivery</h3>
+
+            <div class="tags">
+
+              <span class="tag">Microsoft Azure</span><span class="tag">Docker</span>
+
+              <span class="tag">Git</span><span class="tag">GitHub</span>
+
+              <span class="tag">CI/CD Concepts</span><span class="tag">Application Integration</span>
+
+            </div>
+
+          </article>
+
+          <article class="skill-group">
+
+            <h3><i class="fas fa-flask"></i> AI Innovation</h3>
+
+            <div class="tags">
+
+              <span class="tag">Proof of Concepts</span><span class="tag">AI Prototyping</span>
+
+              <span class="tag">Workflow Automation</span><span class="tag">Multimodal AI</span>
+
+              <span class="tag">Technical Research</span><span class="tag">Platform Initiatives</span>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Projects -->
+
+    <section id="projects">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div>
+
+            <p class="eyebrow">Selected work</p>
+
+            <h2>Projects & explorations</h2>
+
+          </div>
+
+          <p>A selection of AI and software engineering projects. Professional work is described at a high level to respect confidentiality.</p>
+
+        </div>
+
+        <div class="project-grid">
+
+          <article class="project-card">
+
+            <div class="project-top">
+
+              <div class="project-icon"><i class="fas fa-diagram-project"></i></div>
+
+              <span class="project-number">01 / AI ENGINEERING</span>
+
+            </div>
+
+            <h3>Agentic Coding Harness</h3>
+
+            <p>
+
+              Created an end-to-end agentic pipeline and coding framework for GitHub Copilot
+
+              using a harness-based approach, exploring structured AI-assisted engineering workflows.
+
+            </p>
+
+            <div class="tags"><span class="tag">Agentic AI</span><span class="tag">GitHub Copilot</span><span class="tag">Python</span></div>
+
+          </article>
+
+          <article class="project-card">
+
+            <div class="project-top">
+
+              <div class="project-icon"><i class="fas fa-magnifying-glass"></i></div>
+
+              <span class="project-number">02 / GENAI</span>
+
+            </div>
+
+            <h3>Context-Aware RAG Applications</h3>
+
+            <p>
+
+              Worked on RAG-heavy application modules focused on retrieving relevant context
+
+              and grounding LLM responses in information relevant to enterprise use cases.
+
+            </p>
+
+            <div class="tags"><span class="tag">RAG</span><span class="tag">Azure OpenAI</span><span class="tag">Embeddings</span></div>
+
+          </article>
+
+          <article class="project-card">
+
+            <div class="project-top">
+
+              <div class="project-icon"><i class="fas fa-video"></i></div>
+
+              <span class="project-number">03 / COMPUTER VISION</span>
+
+            </div>
+
+            <h3>Face Recognition Attendance System</h3>
+
+            <p>
+
+              Academic project exploring face detection and recognition for attendance
+
+              management, with an application interface and database integration.
+
+            </p>
+
+            <div class="tags"><span class="tag">Python</span><span class="tag">FaceNet</span><span class="tag">YOLO</span><span class="tag">MongoDB</span></div>
+
+          </article>
+
+          <article class="project-card">
+
+            <div class="project-top">
+
+              <div class="project-icon"><i class="fas fa-compass"></i></div>
+
+              <span class="project-number">04 / MACHINE LEARNING</span>
+
+            </div>
+
+            <h3>AI Career Recommendation System</h3>
+
+            <p>
+
+              Developed an academic career recommendation application using machine learning
+
+              concepts to suggest potential career paths based on user information.
+
+            </p>
+
+            <div class="tags"><span class="tag">Machine Learning</span><span class="tag">Python</span><span class="tag">PHP</span><span class="tag">HTML/CSS</span></div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Experience -->
+
+    <section id="experience">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div>
+
+            <p class="eyebrow">Career journey</p>
+
+            <h2>Experience</h2>
+
+          </div>
+
+          <p>Working across enterprise AI engineering, application development, and technical experimentation.</p>
+
+        </div>
+
+        <div class="experience-list">
+
+          <article class="experience-card">
+
+            <div>
+
+              <p class="experience-date">JAN 2026 — PRESENT</p>
+
+              <p class="experience-company">EY GDS Consulting</p>
+
+            </div>
+
+            <div class="experience-content">
+
+              <h3>Generative AI Engineer</h3>
+
+              <p class="team">EY GBS ET · Digital Product and Service · AI Team</p>
+
+              <p>
+
+                Contributing to enterprise GenAI applications, internal initiatives,
+
+                AI proof of concepts, and platform-oriented engineering efforts.
+
+                Exploring practical approaches to applying LLMs and agentic workflows.
+
+              </p>
+
+              <ul>
+
+                <li><strong>RAG applications:</strong> Working on RAG-heavy application modules and LLM-powered workflows.</li>
+
+                <li><strong>Agentic pipeline:</strong> Created an end-to-end agentic pipeline and coding framework for GitHub Copilot using a harness approach.</li>
+
+                <li><strong>POCs and innovation:</strong> Developing proof of concepts, testing new approaches, and exploring emerging AI capabilities.</li>
+
+                <li><strong>Internal initiatives:</strong> Contributing to internal AI initiatives and platform development efforts.</li>
+
+                <li><strong>Labs collaboration:</strong> Working with internal labs and exploring ideas for AI-enabled products and workflows.</li>
+
+                <li><strong>Application engineering:</strong> Building AI application components and workflows primarily with Python and Azure OpenAI.</li>
+
+              </ul>
+
+              <div class="tags" style="margin-top:20px">
+
+                <span class="tag">Python</span><span class="tag">Azure OpenAI</span>
+
+                <span class="tag">RAG</span><span class="tag">Agentic AI</span>
+
+                <span class="tag">GitHub Copilot</span><span class="tag">POCs</span>
+
+              </div>
+
+            </div>
+
+          </article>
+
+          <article class="experience-card">
+
+            <div>
+
+              <p class="experience-date">SEP 2024 — JAN 2026</p>
+
+              <p class="experience-company">UST Global</p>
+
+            </div>
+
+            <div class="experience-content">
+
+              <h3>AI Engineer</h3>
+
+              <p>
+
+                Contributed to software and AI-related engineering work, building
+
+                professional experience in application development, Python, and
+
+                AI-enabled solutions.
+
+              </p>
+
+              <div class="tags" style="margin-top:20px">
+
+                <span class="tag">Python</span><span class="tag">AI Engineering</span>
+
+                <span class="tag">Software Development</span>
+
+              </div>
+
+            </div>
+
+          </article>
+
+          <article class="experience-card">
+
+            <div>
+
+              <p class="experience-date">MAY 2023 — JUN 2023</p>
+
+              <p class="experience-company">Synthite Industries</p>
+
+            </div>
+
+            <div class="experience-content">
+
+              <h3>Technical Intern</h3>
+
+              <p>
+
+                Internship experience with exposure to technical workflows,
+
+                backend integrations, and automation scripts.
+
+              </p>
+
+            </div>
+
+          </article>
+
+          <article class="experience-card">
+
+            <div>
+
+              <p class="experience-date">AUG 2022 — JUN 2023</p>
+
+              <p class="experience-company">IEDC MITS Kochi</p>
+
+            </div>
+
+            <div class="experience-content">
+
+              <h3>Branding Lead</h3>
+
+              <p>
+
+                Led branding and outreach initiatives supporting student innovation
+
+                and entrepreneurship activities.
+
+              </p>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Education -->
+
+    <section id="education">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div>
+
+            <p class="eyebrow">Academic background</p>
+
+            <h2>Education & certifications</h2>
+
+          </div>
+
+        </div>
+
+        <div class="education-grid">
+
+          <article class="education-card">
+
+            <i class="fas fa-graduation-cap"></i>
+
+            <h3>B.Tech — Computer Science & Engineering</h3>
+
+            <p>APJ Abdul Kalam Technological University</p>
+
+            <p class="date">2020 — 2024 · CGPA: 7.5/10</p>
+
+          </article>
+
+          <article class="education-card">
+
+            <i class="fas fa-school"></i>
+
+            <h3>Higher Secondary — Computer Science</h3>
+
+            <p>Mar Coorilose HSS</p>
+
+            <p class="date">2018 — 2020</p>
+
+          </article>
+
+          <article class="education-card">
+
+            <i class="fas fa-book-open"></i>
+
+            <h3>SSLC</h3>
+
+            <p>Mar Athanasius Memorial HSS</p>
+
+            <p class="date">2017 — 2018</p>
+
+          </article>
+
+          <article class="education-card">
+
+            <i class="fas fa-language"></i>
+
+            <h3>Business English Certificate</h3>
+
+            <p>Cambridge English</p>
+
+            <p class="date">June 2021</p>
+
+          </article>
+
+          <article class="education-card">
+
+            <i class="fas fa-code"></i>
+
+            <h3>MERN Full Stack</h3>
+
+            <p>ZeroPixels</p>
+
+            <p class="date">January 2024</p>
+
+          </article>
+
+          <article class="education-card">
+
+            <i class="fas fa-terminal"></i>
+
+            <h3>Django & Python</h3>
+
+            <p>ZeroPixels</p>
+
+            <p class="date">June 2023</p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Contact -->
+
+    <section id="contact">
+
+      <div class="container contact-layout">
+
+        <div class="contact-copy">
+
+          <p class="eyebrow">Get in touch</p>
+
+          <h2>Have an interesting AI problem?</h2>
+
+          <p>
+
+            I'm interested in GenAI engineering, agentic systems, RAG applications,
+
+            AI platform development, and thoughtful collaboration on challenging problems.
+
+          </p>
+
+          <a class="contact-email" href="mailto:aadithyakochupurackal@gmail.com">
+
+            aadithyakochupurackal@gmail.com
+
+          </a>
+
+          <div class="social-links">
+
+            <a href="https://github.com/adithyakochupurackal" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+
+            <a href="https://linkedin.com/in/adithya-krishna-in" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+
+          </div>
+
+        </div>
+
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xovnozvl" method="POST">
+
+          <div class="form-grid">
+
+            <div class="field">
+
+              <label for="name">Your name</label>
+
+              <input id="name" name="name" type="text" placeholder="Jane Smith" required>
+
+            </div>
+
+            <div class="field">
+
+              <label for="email">Email address</label>
+
+              <input id="email" name="email" type="email" placeholder="jane@company.com" required>
+
+            </div>
+
+            <div class="field full">
+
+              <label for="subject">Subject</label>
+
+              <input id="subject" name="subject" type="text" placeholder="Let's discuss an opportunity" required>
+
+            </div>
+
+            <div class="field full">
+
+              <label for="message">Message</label>
+
+              <textarea id="message" name="message" placeholder="Tell me a little about what you have in mind..." required></textarea>
+
+            </div>
+
+          </div>
+
+          <button class="btn btn-primary form-submit" id="submitBtn" type="submit">
+
+            Send message <i class="fas fa-arrow-right"></i>
+
+          </button>
+
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+
+          <p class="form-note">Your message will be sent through Formspree.</p>
+
+        </form>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <p>© <span id="year"></span> Adithya Krishna. Built with curiosity.</p>
+
+      <div class="footer-links">
+
+        <a href="#home">Back to top ↑</a>
+
+        <a href="https://github.com/adithyakochupurackupurackal" target="_blank" rel="noopener">GitHub</a>
+
+        <a href="https://linkedin.com/in/adithya-krishna-in" target="_blank" rel="noopener">LinkedIn</a>
+
+      </div>
+
+    </div>
+
+  </footer>
 
   <script>
-    // Mobile nav
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    const closeNavBtn = document.getElementById('closeNav');
-    function closeMobile() {
-      if (mobileNav) {
-        mobileNav.style.display = 'none';
-        mobileNav.setAttribute('aria-hidden', 'true');
-      }
-    }
-    if (hamburgerBtn) {
-      hamburgerBtn.addEventListener('click', () => {
-        if (mobileNav) {
-          mobileNav.style.display = 'grid';
-          mobileNav.setAttribute('aria-hidden', 'false');
-        }
+
+    // Current year
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile navigation
+
+    const menuToggle = document.getElementById("menuToggle");
+
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+
+      menuToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+
+      menuToggle.innerHTML = isOpen
+
+        ? '<i class="fas fa-xmark"></i>'
+
+        : '<i class="fas fa-bars"></i>';
+
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        navLinks.classList.remove("open");
+
+        menuToggle.setAttribute("aria-expanded", "false");
+
+        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+
       });
-    }
-    if (closeNavBtn) {
-      closeNavBtn.addEventListener('click', closeMobile);
+
+    });
+
+    // Theme toggle with local persistence
+
+    const themeToggle = document.getElementById("themeToggle");
+
+    const savedTheme = localStorage.getItem("portfolio-theme");
+
+    if (savedTheme === "light") {
+
+      document.documentElement.setAttribute("data-theme", "light");
+
+      themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+
     }
 
-    // Typing effect
-    (function () {
-      const el = document.getElementById('typed');
-      if (!el) return;
-      const phrases = [
-        'AI Full-Stack Developer',
-        'Gen-AI • RAG • Agentic Workflows',
-        'Video → Document Pipelines',
-        'APIs, Cloud, Observability'
-      ];
-      let idx = 0, pos = 0, forward = true;
-      const speed = 40, pause = 1400;
-      function tick() {
-        const current = phrases[idx];
-        if (forward) {
-          pos++;
-          el.textContent = current.slice(0, pos);
-          if (pos === current.length) {
-            forward = false;
-            setTimeout(tick, pause);
-            return;
+    themeToggle.addEventListener("click", () => {
+
+      const isLight = document.documentElement.getAttribute("data-theme") === "light";
+
+      if (isLight) {
+
+        document.documentElement.removeAttribute("data-theme");
+
+        localStorage.setItem("portfolio-theme", "dark");
+
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+
+      } else {
+
+        document.documentElement.setAttribute("data-theme", "light");
+
+        localStorage.setItem("portfolio-theme", "light");
+
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+
+      }
+
+    });
+
+    // Reveal cards when they enter the viewport
+
+    const revealElements = document.querySelectorAll(
+
+      ".skill-group, .project-card, .experience-card, .education-card"
+
+    );
+
+    if ("IntersectionObserver" in window) {
+
+      const observer = new IntersectionObserver((entries, obs) => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("visible");
+
+            obs.unobserve(entry.target);
+
           }
+
+        });
+
+      }, { threshold: 0.08 });
+
+      revealElements.forEach(el => {
+
+        el.classList.add("reveal");
+
+        observer.observe(el);
+
+      });
+
+    } else {
+
+      revealElements.forEach(el => el.classList.add("visible"));
+
+    }
+
+    // Contact form submission through Formspree
+
+    const contactForm = document.getElementById("contactForm");
+
+    const submitBtn = document.getElementById("submitBtn");
+
+    const formStatus = document.getElementById("formStatus");
+
+    contactForm.addEventListener("submit", async event => {
+
+      event.preventDefault();
+
+      formStatus.textContent = "";
+
+      submitBtn.disabled = true;
+
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+      try {
+
+        const response = await fetch(contactForm.action, {
+
+          method: "POST",
+
+          body: new FormData(contactForm),
+
+          headers: { "Accept": "application/json" }
+
+        });
+
+        if (response.ok) {
+
+          formStatus.textContent = "Message sent successfully. Thank you for reaching out!";
+
+          contactForm.reset();
+
         } else {
-          pos--;
-          el.textContent = current.slice(0, pos);
-          if (pos === 0) {
-            forward = true;
-            idx = (idx + 1) % phrases.length;
-          }
+
+          formStatus.textContent = "Unable to send right now. Please email me directly.";
+
         }
-        setTimeout(tick, speed);
-      }
-      tick();
-    })();
 
-    // Scroll reveal
-    (function () {
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('show');
-            obs.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.2 });
-      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-    })();
+      } catch (error) {
 
-    // Form submission
-    (function () {
-      const form = document.getElementById('contactForm');
-      const submitBtn = document.getElementById('submitBtn');
-      const formStatus = document.getElementById('formStatus');
-      const mailtoBtn = document.getElementById('mailtoFallback');
+        formStatus.textContent = "A network error occurred. Please email me directly.";
 
-      function setStatus(msg, type) {
-        formStatus.textContent = msg;
-        formStatus.className = 'status ' + (type || '');
+      } finally {
+
+        submitBtn.disabled = false;
+
+        submitBtn.innerHTML = 'Send message <i class="fas fa-arrow-right"></i>';
+
       }
 
-      if (form) {
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          setStatus('', '');
-          const formData = new FormData(form);
-          if (!formData.get('name') || !formData.get('email') || !formData.get('message')) {
-            setStatus('Please complete required fields.', 'error');
-            return;
-          }
-          if (formData.get('_gotcha')) return;
+    });
 
-          submitBtn.disabled = true;
-          submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-
-          const payload = {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            subject: formData.get('subject') || 'Website contact',
-            message: formData.get('message')
-          };
-
-          try {
-            const res = await fetch('https://formspree.io/f/xovnozvl', {
-              method: 'POST',
-              headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload)
-            });
-            if (res.ok) {
-              setStatus('Message sent! I’ll reply soon.', 'success');
-              form.reset();
-            } else {
-              setStatus('Server error. Try the email button.', 'error');
-            }
-          } catch (err) {
-            setStatus('Network error. Try the email button.', 'error');
-          } finally {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send';
-          }
-        });
-      }
-
-      if (mailtoBtn) {
-        mailtoBtn.addEventListener('click', () => {
-          const subject = encodeURIComponent(document.getElementById('subject').value || 'Contact from portfolio');
-          const body = encodeURIComponent(`Name: ${document.getElementById('name').value}\nEmail: ${document.getElementById('email').value}\n\n${document.getElementById('message').value}`);
-          window.location.href = `mailto:aadithyakochupurackal@gmail.com?subject=${subject}&body=${body}`;
-        });
-      }
-    })();
-
-    // Accessibility: keyboard navigation
-    (function () {
-      function handleFirstTab(e) {
-        if (e.key === 'Tab') {
-          document.documentElement.classList.add('user-is-tabbing');
-          window.removeEventListener('keydown', handleFirstTab);
-        }
-      }
-      window.addEventListener('keydown', handleFirstTab);
-    })();
   </script>
+
 </body>
+
 </html>
