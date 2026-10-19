@@ -1,18 +1,18 @@
 
 
-<!DOCTYPE html>
+<!doctype html>
 
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
 
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="theme-color" content="#0a0a0f">
+  <meta name="theme-color" content="#0b0f14">
 
-  <meta name="description" content="Adithya Krishna — Generative AI Engineer at EY GDS Consulting, specializing in RAG, agentic AI, Azure OpenAI, and enterprise AI applications.">
+  <meta name="description" content="Adithya Krishna — Generative AI Engineer at EY GDS, specializing in enterprise RAG, Azure AI Search, agentic workflows and Python engineering.">
 
   <title>Adithya Krishna | Generative AI Engineer</title>
 
@@ -20,7 +20,7 @@
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -28,23 +28,23 @@
 
     :root {
 
-      --bg: #08090b;
+      color-scheme: dark;
 
-      --surface: #101216;
+      --bg: #0b0f14;
 
-      --surface-2: #15181d;
+      --surface: #121922;
 
-      --text: #f3f5f7;
+      --surface2: #18222c;
 
-      --muted: #969da8;
+      --text: #edf3f5;
 
-      --accent: #c5f467;
+      --muted: #93a1ad;
 
-      --border: rgba(255,255,255,.09);
+      --accent: #c2f970;
 
-      --header: rgba(8,9,11,.82);
+      --accent-ink: #17210b;
 
-      --radius: 18px;
+      --border: rgba(210,230,240,.12);
 
       --max: 1160px;
 
@@ -52,35 +52,45 @@
 
     [data-theme="light"] {
 
-      --bg: #f6f7f4;
+      color-scheme: light;
+
+      --bg: #f4f6f2;
 
       --surface: #fff;
 
-      --surface-2: #eef0e9;
+      --surface2: #edf1e9;
 
-      --text: #171a17;
+      --text: #172027;
 
-      --muted: #626a61;
+      --muted: #687780;
 
-      --accent: #527b12;
+      --accent: #8bcf3f;
 
-      --border: rgba(0,0,0,.1);
+      --accent-ink: #112006;
 
-      --header: rgba(246,247,244,.88);
+      --border: rgba(25,43,51,.13);
 
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
 
     body {
 
-      font-family: "DM Sans", sans-serif;
+      margin: 0;
 
-      background: var(--bg);
+      min-width: 320px;
+
+      background:
+
+        radial-gradient(ellipse at 10% 0%, rgba(194,249,112,.08), transparent 34rem),
+
+        var(--bg);
 
       color: var(--text);
+
+      font-family: Inter, sans-serif;
 
       line-height: 1.7;
 
@@ -88,49 +98,53 @@
 
     }
 
-    a { color: inherit; text-decoration: none; }
+    a { color: inherit; }
 
-    button { font: inherit; }
+    button, input, textarea { font: inherit; }
+
+    button:focus-visible, a:focus-visible, input:focus-visible,
+
+    textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
     .container { width: min(var(--max), calc(100% - 44px)); margin: auto; }
-
-    .muted { color: var(--muted); }
 
     .eyebrow {
 
       color: var(--accent);
 
-      font-size: .76rem;
-
-      font-weight: 700;
+      font: 500 11px "DM Mono", monospace;
 
       text-transform: uppercase;
 
-      letter-spacing: .16em;
+      letter-spacing: 1.6px;
 
     }
+
+    h1, h2, h3, h4 { font-family: "Space Grotesk", sans-serif; line-height: 1.2; }
+
+    h2 { font-size: clamp(28px, 4vw, 43px); letter-spacing: -1.7px; }
+
+    .muted { color: var(--muted); }
 
     /* Navigation */
 
-    .navbar {
+    header {
 
       position: sticky;
 
-      top: 0;
+      top: 10px;
 
-      z-index: 100;
+      z-index: 20;
 
-      background: var(--header);
-
-      backdrop-filter: blur(18px);
-
-      border-bottom: 1px solid var(--border);
+      padding-top: 10px;
 
     }
 
-    .nav-inner {
+    .nav {
 
-      min-height: 76px;
+      min-height: 68px;
+
+      padding: 10px 14px 10px 18px;
 
       display: flex;
 
@@ -138,53 +152,89 @@
 
       justify-content: space-between;
 
-      gap: 20px;
+      gap: 16px;
 
-    }
-
-    .logo {
-
-      font-family: "Space Grotesk", sans-serif;
-
-      font-weight: 700;
-
-      font-size: 1.05rem;
-
-      letter-spacing: -.04em;
-
-    }
-
-    .logo span { color: var(--accent); }
-
-    .nav-links { display: flex; align-items: center; gap: 24px; }
-
-    .nav-links a {
-
-      color: var(--muted);
-
-      font-size: .88rem;
-
-      transition: color .2s;
-
-    }
-
-    .nav-links a:hover { color: var(--accent); }
-
-    .nav-actions { display: flex; gap: 10px; align-items: center; }
-
-    .icon-btn, .menu-btn {
-
-      width: 42px; height: 42px;
-
-      display: grid; place-items: center;
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
 
       border: 1px solid var(--border);
 
-      border-radius: 12px;
+      border-radius: 17px;
 
-      background: var(--surface);
+      backdrop-filter: blur(18px);
+
+    }
+
+    .brand {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      font: 700 15px "Space Grotesk", sans-serif;
+
+      text-decoration: none;
+
+      white-space: nowrap;
+
+    }
+
+    .brand-mark {
+
+      display: grid;
+
+      place-items: center;
+
+      width: 38px;
+
+      height: 38px;
+
+      border-radius: 11px;
+
+      background: var(--accent);
+
+      color: var(--accent-ink);
+
+    }
+
+    .links { display: flex; gap: 5px; align-items: center; }
+
+    .links a {
+
+      padding: 9px 10px;
+
+      color: var(--muted);
+
+      text-decoration: none;
+
+      font-size: 12px;
+
+      border-radius: 9px;
+
+    }
+
+    .links a:hover, .links a.active { color: var(--text); background: var(--surface2); }
+
+    .nav-actions { display: flex; align-items: center; gap: 8px; }
+
+    .icon-btn, .menu-btn {
+
+      display: grid;
+
+      place-items: center;
+
+      width: 40px;
+
+      height: 40px;
+
+      background: transparent;
+
+      border: 1px solid var(--border);
 
       color: var(--text);
+
+      border-radius: 11px;
 
       cursor: pointer;
 
@@ -202,63 +252,51 @@
 
       gap: 9px;
 
-      border-radius: 12px;
+      padding: 12px 17px;
 
-      padding: 12px 18px;
-
-      font-weight: 700;
-
-      font-size: .9rem;
-
-      transition: transform .2s, opacity .2s;
+      min-height: 44px;
 
       border: 1px solid transparent;
 
+      border-radius: 11px;
+
+      text-decoration: none;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
       cursor: pointer;
+
+      transition: transform .2s, opacity .2s;
 
     }
 
     .btn:hover { transform: translateY(-2px); }
 
-    .btn-primary { background: var(--accent); color: #11160a; }
+    .primary { background: var(--accent); color: var(--accent-ink); }
 
-    .btn-outline { border-color: var(--border); background: var(--surface); color: var(--text); }
+    .secondary { border-color: var(--border); background: var(--surface); color: var(--text); }
 
     /* Hero */
 
-    .hero { padding: 100px 0 82px; position: relative; overflow: hidden; }
-
-    .hero::before {
-
-      content: "";
-
-      position: absolute;
-
-      width: 480px; height: 480px;
-
-      right: -140px; top: -180px;
-
-      background: radial-gradient(circle, rgba(197,244,103,.10), transparent 68%);
-
-      pointer-events: none;
-
-    }
-
-    .hero-grid {
+    .hero {
 
       display: grid;
 
-      grid-template-columns: 1.45fr .75fr;
+      grid-template-columns: 1.25fr .75fr;
 
-      gap: 60px;
+      gap: 65px;
 
       align-items: center;
 
-      position: relative;
+      padding-top: clamp(75px, 10vw, 125px);
+
+      padding-bottom: 95px;
 
     }
 
-    .availability {
+    .status {
 
       display: inline-flex;
 
@@ -272,149 +310,115 @@
 
       border-radius: 99px;
 
-      font-size: .8rem;
+      font-size: 11px;
 
       color: var(--muted);
 
-      margin-bottom: 24px;
-
     }
 
-    .status-dot {
-
-      width: 8px; height: 8px;
-
-      border-radius: 50%;
-
-      background: var(--accent);
-
-      box-shadow: 0 0 12px rgba(197,244,103,.6);
-
-    }
-
-    h1, h2, h3, h4 { font-family: "Space Grotesk", sans-serif; line-height: 1.2; }
+    .status i { color: var(--accent); font-size: 9px; }
 
     h1 {
 
-      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      margin: 23px 0;
 
-      letter-spacing: -.07em;
+      max-width: 760px;
 
-      line-height: 1.04;
+      font-size: clamp(43px, 6.3vw, 78px);
 
-      max-width: 780px;
+      line-height: 1.02;
 
-    }
+      letter-spacing: -4px;
 
-    h1 .highlight { color: var(--accent); }
-
-    .hero-copy {
-
-      max-width: 650px;
-
-      color: var(--muted);
-
-      font-size: 1.04rem;
-
-      margin-top: 25px;
+      font-weight: 600;
 
     }
 
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .accent { color: var(--accent); }
 
-    .hero-meta { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 28px; color: var(--muted); font-size: .86rem; }
+    .hero-copy { max-width: 660px; color: var(--muted); font-size: 15px; }
 
-    .hero-meta i { color: var(--accent); margin-right: 7px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 28px; }
 
-    .profile-card {
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 26px; color: var(--muted); font-size: 12px; }
 
-      padding: 28px;
+    .hero-meta i { color: var(--accent); margin-right: 6px; }
 
-      background: linear-gradient(145deg, var(--surface-2), var(--surface));
+    .profile {
+
+      padding: 26px;
 
       border: 1px solid var(--border);
 
       border-radius: 24px;
 
-      position: relative;
+      background: linear-gradient(145deg, var(--surface2), var(--surface));
 
-      overflow: hidden;
-
-    }
-
-    .profile-card::after {
-
-      content: "";
-
-      position: absolute;
-
-      width: 180px; height: 180px;
-
-      right: -70px; bottom: -80px;
-
-      border-radius: 50%;
-
-      border: 1px solid var(--border);
-
-      box-shadow: 0 0 0 20px rgba(255,255,255,.015), 0 0 0 40px rgba(255,255,255,.012);
-
-      pointer-events: none;
+      box-shadow: 0 24px 80px rgba(0,0,0,.13);
 
     }
 
     .avatar {
 
-      width: 82px; height: 82px;
+      width: 84px;
 
-      border-radius: 20px;
+      height: 84px;
+
+      display: grid;
+
+      place-items: center;
 
       overflow: hidden;
 
+      border-radius: 20px;
+
       border: 1px solid var(--border);
 
-      background: var(--surface-2);
+      background: var(--surface2);
 
-      margin-bottom: 20px;
+      margin: 20px 0;
 
     }
 
     .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-    .profile-card h2 { font-size: 1.45rem; letter-spacing: -.04em; }
+    .profile h2 { font-size: 25px; margin: 0; }
 
-    .profile-role { color: var(--muted); margin-top: 5px; font-size: .9rem; }
+    .profile-role { color: var(--muted); font-size: 13px; }
 
-    .profile-divider { border: 0; border-top: 1px solid var(--border); margin: 24px 0; }
+    .profile-detail { display: flex; align-items: flex-start; gap: 12px; margin-top: 15px; font-size: 12px; }
 
-    .profile-detail { display: flex; gap: 12px; align-items: flex-start; margin: 13px 0; font-size: .88rem; }
+    .profile-detail i { color: var(--accent); margin-top: 5px; }
 
-    .profile-detail i { color: var(--accent); width: 17px; margin-top: 5px; }
+    .socials { display: flex; gap: 9px; margin-top: 22px; }
 
-    .social-links { display: flex; gap: 10px; margin-top: 22px; }
+    .socials a {
 
-    .social-links a {
+      display: grid;
 
-      width: 40px; height: 40px;
+      place-items: center;
 
-      display: grid; place-items: center;
+      width: 40px;
+
+      height: 40px;
 
       border: 1px solid var(--border);
 
       border-radius: 11px;
 
-      color: var(--muted);
+      text-decoration: none;
 
-      transition: color .2s, border-color .2s;
+      color: var(--muted);
 
     }
 
-    .social-links a:hover { color: var(--accent); border-color: var(--accent); }
+    .socials a:hover { color: var(--accent); border-color: var(--accent); }
 
-    /* General sections */
+    /* Shared sections */
 
-    section { padding: 76px 0; border-top: 1px solid var(--border); }
+    section.content-section { padding: 75px 0; border-top: 1px solid var(--border); }
 
-    .section-heading {
+    .section-head {
 
       display: flex;
 
@@ -422,317 +426,261 @@
 
       align-items: end;
 
-      gap: 20px;
+      gap: 24px;
 
-      margin-bottom: 34px;
-
-    }
-
-    .section-heading h2 {
-
-      font-size: clamp(2rem, 4vw, 3rem);
-
-      letter-spacing: -.06em;
-
-      margin-top: 9px;
+      margin-bottom: 32px;
 
     }
 
-    .section-heading p { max-width: 430px; color: var(--muted); font-size: .92rem; }
+    .section-head h2 { margin: 10px 0 0; }
+
+    .section-head > p { max-width: 420px; color: var(--muted); font-size: 13px; }
 
     /* Skills */
 
-    .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .skill-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
 
-    .skill-group {
+    .card {
 
-      padding: 24px;
+      padding: 23px;
 
       border: 1px solid var(--border);
+
+      border-radius: 17px;
 
       background: var(--surface);
-
-      border-radius: var(--radius);
-
-    }
-
-    .skill-group h3 { font-size: 1.06rem; margin-bottom: 18px; }
-
-    .skill-group h3 i { color: var(--accent); margin-right: 9px; }
-
-    .tags { display: flex; flex-wrap: wrap; gap: 9px; }
-
-    .tag {
-
-      padding: 7px 11px;
-
-      border: 1px solid var(--border);
-
-      border-radius: 9px;
-
-      color: var(--muted);
-
-      font-size: .81rem;
-
-      background: var(--surface-2);
-
-    }
-
-    /* Projects */
-
-    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-
-    .project-card {
-
-      padding: 26px;
-
-      border: 1px solid var(--border);
-
-      background: var(--surface);
-
-      border-radius: var(--radius);
 
       transition: transform .25s, border-color .25s;
 
     }
 
-    .project-card:hover { transform: translateY(-5px); border-color: rgba(197,244,103,.4); }
+    .card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); }
 
-    .project-top { display: flex; justify-content: space-between; gap: 15px; align-items: center; margin-bottom: 20px; }
+    .card h3 { font-size: 16px; margin: 0 0 16px; }
+
+    .card h3 i { color: var(--accent); margin-right: 8px; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .tag {
+
+      padding: 6px 10px;
+
+      background: var(--surface2);
+
+      border: 1px solid var(--border);
+
+      border-radius: 8px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+
+    }
+
+    /* Projects */
+
+    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+    .project-top { display: flex; justify-content: space-between; margin-bottom: 20px; }
 
     .project-icon {
 
-      width: 46px; height: 46px;
+      width: 43px; height: 43px; display: grid; place-items: center;
 
-      display: grid; place-items: center;
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
 
-      border-radius: 14px;
-
-      background: rgba(197,244,103,.1);
-
-      color: var(--accent);
-
-      font-size: 1.15rem;
+      color: var(--accent); border-radius: 13px;
 
     }
 
-    .project-number { color: var(--muted); font-size: .78rem; }
+    .project-number { font: 10px "DM Mono", monospace; color: var(--muted); }
 
-    .project-card h3 { font-size: 1.3rem; margin-bottom: 12px; letter-spacing: -.03em; }
+    .project h3 { font-size: 19px; margin: 0 0 12px; }
 
-    .project-card p { color: var(--muted); font-size: .91rem; margin-bottom: 20px; }
+    .project p { color: var(--muted); font-size: 13px; }
 
-    .project-card .tags { margin-top: 20px; }
+    .project .tags { margin-top: 18px; }
 
     /* Experience */
 
-    .experience-list { display: flex; flex-direction: column; gap: 18px; }
+    .experience-list { display: grid; gap: 16px; }
 
-    .experience-card {
+    .experience {
 
       display: grid;
 
-      grid-template-columns: 210px 1fr;
+      grid-template-columns: 205px 1fr;
 
-      gap: 30px;
+      gap: 28px;
 
-      padding: 28px;
-
-      border: 1px solid var(--border);
-
-      background: var(--surface);
-
-      border-radius: var(--radius);
-
-    }
-
-    .experience-date { color: var(--accent); font-size: .82rem; font-weight: 700; }
-
-    .experience-company { color: var(--muted); font-size: .86rem; margin-top: 8px; }
-
-    .experience-content h3 { font-size: 1.28rem; margin-bottom: 5px; }
-
-    .experience-content .team { color: var(--muted); font-size: .88rem; margin-bottom: 17px; }
-
-    .experience-content > p { color: var(--muted); font-size: .91rem; }
-
-    .experience-content ul { padding-left: 20px; margin-top: 14px; }
-
-    .experience-content li { color: var(--muted); font-size: .89rem; padding: 4px 0; }
-
-    .experience-content li strong { color: var(--text); }
-
-    /* Education and certifications */
-
-    .education-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-
-    .education-card {
-
-      padding: 24px;
-
-      background: var(--surface);
+      padding: 27px;
 
       border: 1px solid var(--border);
 
-      border-radius: var(--radius);
+      border-radius: 18px;
+
+      background: var(--surface);
 
     }
 
-    .education-card i { color: var(--accent); font-size: 1.3rem; margin-bottom: 18px; }
+    .experience-date { color: var(--accent); font: 11px "DM Mono", monospace; }
 
-    .education-card h3 { font-size: 1.05rem; margin-bottom: 10px; }
+    .company { color: var(--muted); font-size: 12px; margin-top: 7px; }
 
-    .education-card p { color: var(--muted); font-size: .87rem; }
+    .experience h3 { font-size: 21px; margin: 0 0 5px; }
 
-    .education-card .date { margin-top: 15px; font-size: .8rem; color: var(--accent); }
+    .team { color: var(--muted); font-size: 12px; margin-top: 0; }
+
+    .experience p, .experience li { color: var(--muted); font-size: 13px; }
+
+    .experience ul { padding-left: 19px; }
+
+    .experience li { padding: 4px 0; }
+
+    .experience li strong { color: var(--text); }
+
+    /* Education / certifications */
+
+    .education-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+
+    .education h3 { font-size: 15px; }
+
+    .education p { color: var(--muted); font-size: 12px; }
+
+    .education i { color: var(--accent); font-size: 20px; margin-bottom: 16px; }
+
+    .edu-meta { color: var(--accent) !important; }
+
+    .cert-list { display: grid; gap: 10px; }
+
+    .cert {
+
+      display: flex;
+
+      gap: 13px;
+
+      align-items: flex-start;
+
+      padding: 15px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 12px;
+
+      background: var(--surface);
+
+    }
+
+    .cert > i { color: var(--accent); margin-top: 4px; }
+
+    .cert h3 { margin: 0; font-size: 13px; }
+
+    .cert p { margin: 5px 0 0; color: var(--muted); font-size: 11px; }
 
     /* Contact */
 
-    .contact-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 50px; }
+    .contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 40px; }
 
-    .contact-copy h2 { font-size: clamp(2.2rem, 4vw, 3.4rem); letter-spacing: -.06em; margin: 12px 0 18px; }
+    .contact-copy h2 { font-size: clamp(30px, 4vw, 44px); }
 
-    .contact-copy p { color: var(--muted); }
+    .contact-copy p { color: var(--muted); font-size: 13px; }
 
-    .contact-email { display: inline-block; color: var(--accent); margin-top: 20px; overflow-wrap: anywhere; }
+    .contact-copy a { color: var(--accent); overflow-wrap: anywhere; }
 
-    .contact-form {
+    form { padding: 24px; border: 1px solid var(--border); background: var(--surface); border-radius: 17px; }
 
-      background: var(--surface);
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
-      border: 1px solid var(--border);
+    .field { margin-bottom: 15px; }
 
-      border-radius: var(--radius);
-
-      padding: 26px;
-
-    }
-
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-    .field.full { grid-column: 1 / -1; }
-
-    label { display: block; font-size: .82rem; margin-bottom: 7px; color: var(--muted); }
+    label { display: block; margin-bottom: 7px; color: var(--muted); font-size: 12px; }
 
     input, textarea {
 
-      width: 100%;
+      width: 100%; padding: 12px 13px; border: 1px solid var(--border);
 
-      padding: 13px 14px;
-
-      color: var(--text);
-
-      background: var(--bg);
-
-      border: 1px solid var(--border);
-
-      border-radius: 10px;
-
-      outline: none;
-
-      font: inherit;
-
-      font-size: .9rem;
+      border-radius: 10px; background: var(--bg); color: var(--text); font-size: 13px;
 
     }
 
-    input:focus, textarea:focus { border-color: var(--accent); }
+    textarea { min-height: 120px; resize: vertical; }
 
-    textarea { resize: vertical; min-height: 130px; }
+    .form-status { color: var(--muted); font-size: 12px; margin-top: 12px; }
 
-    .form-submit { margin-top: 17px; }
+    .form-status.success { color: var(--accent); }
 
-    .form-status { font-size: .85rem; margin-top: 12px; color: var(--muted); }
+    .form-status.error { color: #ff9eaa; }
 
-    .form-note { color: var(--muted); font-size: .76rem; margin-top: 12px; }
+    footer { padding: 25px 0; border-top: 1px solid var(--border); }
 
-    footer { padding: 28px 0; border-top: 1px solid var(--border); }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: 11px; }
 
-    .footer-inner { display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: .82rem; }
+    .footer-links { display: flex; gap: 15px; }
 
-    .footer-links { display: flex; gap: 18px; }
+    .footer-links a { text-decoration: none; }
 
     .footer-links a:hover { color: var(--accent); }
 
-    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s, transform .6s; }
+    .reveal { opacity: 0; transform: translateY(12px); transition: opacity .5s, transform .5s; }
 
     .reveal.visible { opacity: 1; transform: none; }
 
     @media (prefers-reduced-motion: reduce) {
 
-      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
 
       .reveal { opacity: 1; transform: none; }
 
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 920px) {
 
-      .nav-links {
-
-        display: none;
-
-        position: absolute;
-
-        top: 76px; left: 0; right: 0;
-
-        padding: 22px;
-
-        background: var(--surface);
-
-        border-bottom: 1px solid var(--border);
-
-        flex-direction: column;
-
-        align-items: stretch;
-
-        gap: 5px;
-
-      }
-
-      .nav-links.open { display: flex; }
-
-      .nav-links a { padding: 10px 8px; }
+      .links { display: none; }
 
       .menu-btn { display: grid; }
 
-      .hero { padding-top: 70px; }
+      .links.open {
 
-      .hero-grid { grid-template-columns: 1fr; gap: 35px; }
+        display: flex; position: absolute; top: 78px; left: 22px; right: 22px;
 
-      .profile-card { max-width: 540px; }
+        padding: 15px; flex-direction: column; align-items: stretch;
 
-      .contact-layout { grid-template-columns: 1fr; gap: 30px; }
+        background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+
+      }
+
+      .links.open a { padding: 12px; }
+
+      .hero { grid-template-columns: 1fr; gap: 35px; }
+
+      .profile { max-width: 560px; }
+
+      .contact-grid { grid-template-columns: 1fr; }
 
     }
 
     @media (max-width: 650px) {
 
-      .container { width: min(100% - 30px, var(--max)); }
+      .container { width: calc(100% - 30px); }
 
-      .nav-inner { min-height: 68px; }
+      h1 { font-size: clamp(41px, 12vw, 60px); letter-spacing: -2.5px; }
 
-      .nav-links { top: 68px; }
+      .hero { padding-top: 65px; padding-bottom: 65px; }
 
-      .hero { padding: 62px 0 55px; }
+      section.content-section { padding: 55px 0; }
 
-      h1 { font-size: clamp(2.6rem, 13vw, 4rem); }
+      .section-head { display: block; }
 
-      section { padding: 58px 0; }
+      .section-head > p { margin-top: 12px; }
 
-      .section-heading { align-items: flex-start; flex-direction: column; }
+      .skill-grid, .project-grid, .education-grid { grid-template-columns: 1fr; }
 
-      .skills-layout, .project-grid, .education-grid { grid-template-columns: 1fr; }
+      .experience { grid-template-columns: 1fr; gap: 12px; padding: 21px; }
 
-      .experience-card { grid-template-columns: 1fr; gap: 12px; padding: 22px; }
-
-      .form-grid { grid-template-columns: 1fr; }
-
-      .field.full { grid-column: auto; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
 
       .footer-inner { flex-direction: column; }
-
-      .hero-meta { flex-direction: column; gap: 9px; }
 
     }
 
@@ -742,923 +690,855 @@
 
 <body>
 
-  <header class="navbar">
+<header>
 
-    <div class="container nav-inner">
+  <div class="container nav">
 
-      <a class="logo" href="#home">AK<span>.</span></a>
+    <a class="brand" href="#home">
 
-      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <span class="brand-mark">AK</span>
 
-        <a href="#about">About</a>
+      <span>Adithya Krishna</span>
 
-        <a href="#skills">Skills</a>
+    </a>
 
-        <a href="#projects">Projects</a>
+    <nav class="links" id="navLinks" aria-label="Main navigation">
 
-        <a href="#experience">Experience</a>
+      <a href="#about">About</a>
 
-        <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
 
-        <a href="#contact">Contact</a>
+      <a href="#projects">Projects</a>
 
-      </nav>
+      <a href="#experience">Experience</a>
 
-      <div class="nav-actions">
+      <a href="#education">Education</a>
 
-        <button class="icon-btn" id="themeToggle" aria-label="Toggle color theme" title="Toggle theme">
+      <a href="#contact">Contact</a>
 
-          <i class="fas fa-sun"></i>
+    </nav>
 
-        </button>
+    <div class="nav-actions">
 
-        <a class="btn btn-primary" href="assets/resume.pdf" target="_blank" rel="noopener">
+      <button class="icon-btn" id="themeToggle" aria-label="Switch theme">
 
-          <i class="fas fa-arrow-down"></i> Resume
+        <i class="fa-regular fa-moon"></i>
 
-        </a>
+      </button>
 
-        <button class="menu-btn" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
+      <a class="btn primary" href="assets/resume.pdf" target="_blank" rel="noopener">
 
-          <i class="fas fa-bars"></i>
+        <i class="fa-regular fa-file-pdf"></i> Resume
 
-        </button>
+      </a>
+
+      <button class="menu-btn" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
+
+        <i class="fa-solid fa-bars"></i>
+
+      </button>
+
+    </div>
+
+  </div>
+
+</header>
+
+<main>
+
+  <div class="container hero" id="home">
+
+    <div>
+
+      <span class="status"><i class="fa-solid fa-circle"></i> Generative AI Engineer · Kochi, India</span>
+
+      <p class="eyebrow" style="margin-top:28px">Hello, I'm Adithya Krishna</p>
+
+      <h1>Building useful AI systems, from <span class="accent">RAG to agentic workflows.</span></h1>
+
+      <p class="hero-copy">
+
+        I'm a Generative AI Engineer at <strong>EY GDS</strong>, working in the
+
+        <strong>EY GBS ET — Digital Product and Service, AI team</strong>.
+
+        I build enterprise GenAI capabilities through RAG-heavy applications,
+
+        Azure AI Search, Python backend services, agentic pipelines and rapid
+
+        proof-of-concept development.
+
+      </p>
+
+      <div class="hero-actions">
+
+        <a class="btn primary" href="#projects">Explore my work <i class="fa-solid fa-arrow-right"></i></a>
+
+        <a class="btn secondary" href="#contact">Let's connect <i class="fa-regular fa-paper-plane"></i></a>
+
+      </div>
+
+      <div class="hero-meta">
+
+        <span><i class="fa-solid fa-location-dot"></i> Kochi, Kerala, India</span>
+
+        <span><i class="fa-solid fa-code"></i> Python · Azure · GenAI</span>
 
       </div>
 
     </div>
 
-  </header>
+    <aside class="profile" id="about">
 
-  <main>
+      <span class="eyebrow">Profile / 001</span>
 
-    <!-- Hero -->
+      <div class="avatar">
 
-    <section class="hero" id="home" style="border-top:0">
-
-      <div class="container hero-grid">
-
-        <div>
-
-          <div class="availability"><span class="status-dot"></span> Generative AI Engineer · Kochi, India</div>
-
-          <p class="eyebrow">Hello, I'm Adithya Krishna</p>
-
-          <h1 style="margin-top:18px">
-
-            Engineering the next generation of
-
-            <span class="highlight">AI applications.</span>
-
-          </h1>
-
-          <p class="hero-copy">
-
-            I build AI-powered applications and explore how large language models,
-
-            retrieval systems, and agentic workflows can solve real-world enterprise
-
-            problems. My work spans Python, Azure OpenAI, RAG-heavy applications,
-
-            and experimental AI engineering.
-
-          </p>
-
-          <div class="hero-actions">
-
-            <a href="#projects" class="btn btn-primary">Explore my work <i class="fas fa-arrow-right"></i></a>
-
-            <a href="#contact" class="btn btn-outline">Let's connect <i class="far fa-paper-plane"></i></a>
-
-          </div>
-
-          <div class="hero-meta">
-
-            <span><i class="fas fa-location-dot"></i> Kochi, Kerala, India</span>
-
-            <span><i class="fas fa-code"></i> Python · GenAI · RAG</span>
-
-          </div>
-
-        </div>
-
-        <aside class="profile-card" id="about">
-
-          <div class="avatar">
-
-            <img src="assets/photo.png" alt="Adithya Krishna" onerror="this.style.display='none'">
-
-          </div>
-
-          <p class="eyebrow">Profile</p>
-
-          <h2 style="margin-top:8px">Adithya Krishna</h2>
-
-          <p class="profile-role">Generative AI Engineer at EY GDS Consulting</p>
-
-          <hr class="profile-divider">
-
-          <div class="profile-detail"><i class="fas fa-building"></i><span>EY GBS ET · Digital Product and Service · AI Team</span></div>
-
-          <div class="profile-detail"><i class="fas fa-brain"></i><span>Enterprise GenAI, agentic systems, and AI prototyping</span></div>
-
-          <div class="profile-detail"><i class="fas fa-envelope"></i><a href="mailto:aadithyakochupurackal@gmail.com">aadithyakochupurackal@gmail.com</a></div>
-
-          <div class="social-links">
-
-            <a href="https://github.com/adithyakochupurackal" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-
-            <a href="https://linkedin.com/in/adithya-krishna-in" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-
-            <a href="mailto:aadithyakochupurackal@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-
-          </div>
-
-        </aside>
+        <img src="assets/photo.png" alt="Adithya Krishna" onerror="this.style.display='none'">
 
       </div>
 
-    </section>
+      <h2>Adithya Krishna</h2>
 
-    <!-- Skills -->
+      <p class="profile-role">Generative AI Engineer · EY GDS</p>
 
-    <section id="skills">
+      <div class="profile-detail"><i class="fa-solid fa-building"></i><span>EY GBS ET — Digital Product and Service, AI Team</span></div>
 
-      <div class="container">
+      <div class="profile-detail"><i class="fa-solid fa-brain"></i><span>Enterprise RAG, AI engineering, agentic workflows</span></div>
 
-        <div class="section-heading">
+      <div class="profile-detail"><i class="fa-regular fa-envelope"></i><a href="mailto:aadithyakochupurackal@gmail.com">aadithyakochupurackal@gmail.com</a></div>
 
-          <div>
+      <div class="socials">
 
-            <p class="eyebrow">What I work with</p>
+        <a href="https://github.com/adithyakochupurackal" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
 
-            <h2>Technical toolkit</h2>
+        <a href="https://linkedin.com/in/adithya-krishna-in" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
 
-          </div>
-
-          <p>A practical toolkit for building, experimenting with, and integrating AI capabilities into applications.</p>
-
-        </div>
-
-        <div class="skills-layout">
-
-          <article class="skill-group">
-
-            <h3><i class="fas fa-brain"></i> Generative AI</h3>
-
-            <div class="tags">
-
-              <span class="tag">Azure OpenAI</span><span class="tag">LLMs</span>
-
-              <span class="tag">RAG Pipelines</span><span class="tag">Agentic AI</span>
-
-              <span class="tag">Prompt Engineering</span><span class="tag">GitHub Copilot</span>
-
-              <span class="tag">Embeddings</span><span class="tag">Vector Databases</span>
-
-            </div>
-
-          </article>
-
-          <article class="skill-group">
-
-            <h3><i class="fas fa-code"></i> Engineering</h3>
-
-            <div class="tags">
-
-              <span class="tag">Python</span><span class="tag">FastAPI</span>
-
-              <span class="tag">REST APIs</span><span class="tag">React</span>
-
-              <span class="tag">JavaScript</span><span class="tag">Node.js</span>
-
-              <span class="tag">MongoDB</span><span class="tag">MySQL</span>
-
-            </div>
-
-          </article>
-
-          <article class="skill-group">
-
-            <h3><i class="fas fa-cloud"></i> Cloud & Delivery</h3>
-
-            <div class="tags">
-
-              <span class="tag">Microsoft Azure</span><span class="tag">Docker</span>
-
-              <span class="tag">Git</span><span class="tag">GitHub</span>
-
-              <span class="tag">CI/CD Concepts</span><span class="tag">Application Integration</span>
-
-            </div>
-
-          </article>
-
-          <article class="skill-group">
-
-            <h3><i class="fas fa-flask"></i> AI Innovation</h3>
-
-            <div class="tags">
-
-              <span class="tag">Proof of Concepts</span><span class="tag">AI Prototyping</span>
-
-              <span class="tag">Workflow Automation</span><span class="tag">Multimodal AI</span>
-
-              <span class="tag">Technical Research</span><span class="tag">Platform Initiatives</span>
-
-            </div>
-
-          </article>
-
-        </div>
+        <a href="mailto:aadithyakochupurackal@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
 
       </div>
 
-    </section>
+    </aside>
 
-    <!-- Projects -->
+  </div>
 
-    <section id="projects">
+  <section class="content-section" id="skills">
 
-      <div class="container">
+    <div class="container">
 
-        <div class="section-heading">
+      <div class="section-head">
 
-          <div>
+        <div><p class="eyebrow">What I work with</p><h2>Technical toolkit</h2></div>
 
-            <p class="eyebrow">Selected work</p>
-
-            <h2>Projects & explorations</h2>
-
-          </div>
-
-          <p>A selection of AI and software engineering projects. Professional work is described at a high level to respect confidentiality.</p>
-
-        </div>
-
-        <div class="project-grid">
-
-          <article class="project-card">
-
-            <div class="project-top">
-
-              <div class="project-icon"><i class="fas fa-diagram-project"></i></div>
-
-              <span class="project-number">01 / AI ENGINEERING</span>
-
-            </div>
-
-            <h3>Agentic Coding Harness</h3>
-
-            <p>
-
-              Created an end-to-end agentic pipeline and coding framework for GitHub Copilot
-
-              using a harness-based approach, exploring structured AI-assisted engineering workflows.
-
-            </p>
-
-            <div class="tags"><span class="tag">Agentic AI</span><span class="tag">GitHub Copilot</span><span class="tag">Python</span></div>
-
-          </article>
-
-          <article class="project-card">
-
-            <div class="project-top">
-
-              <div class="project-icon"><i class="fas fa-magnifying-glass"></i></div>
-
-              <span class="project-number">02 / GENAI</span>
-
-            </div>
-
-            <h3>Context-Aware RAG Applications</h3>
-
-            <p>
-
-              Worked on RAG-heavy application modules focused on retrieving relevant context
-
-              and grounding LLM responses in information relevant to enterprise use cases.
-
-            </p>
-
-            <div class="tags"><span class="tag">RAG</span><span class="tag">Azure OpenAI</span><span class="tag">Embeddings</span></div>
-
-          </article>
-
-          <article class="project-card">
-
-            <div class="project-top">
-
-              <div class="project-icon"><i class="fas fa-video"></i></div>
-
-              <span class="project-number">03 / COMPUTER VISION</span>
-
-            </div>
-
-            <h3>Face Recognition Attendance System</h3>
-
-            <p>
-
-              Academic project exploring face detection and recognition for attendance
-
-              management, with an application interface and database integration.
-
-            </p>
-
-            <div class="tags"><span class="tag">Python</span><span class="tag">FaceNet</span><span class="tag">YOLO</span><span class="tag">MongoDB</span></div>
-
-          </article>
-
-          <article class="project-card">
-
-            <div class="project-top">
-
-              <div class="project-icon"><i class="fas fa-compass"></i></div>
-
-              <span class="project-number">04 / MACHINE LEARNING</span>
-
-            </div>
-
-            <h3>AI Career Recommendation System</h3>
-
-            <p>
-
-              Developed an academic career recommendation application using machine learning
-
-              concepts to suggest potential career paths based on user information.
-
-            </p>
-
-            <div class="tags"><span class="tag">Machine Learning</span><span class="tag">Python</span><span class="tag">PHP</span><span class="tag">HTML/CSS</span></div>
-
-          </article>
-
-        </div>
+        <p>A practical toolkit for building and integrating AI capabilities into enterprise applications.</p>
 
       </div>
 
-    </section>
+      <div class="skill-grid">
 
-    <!-- Experience -->
+        <article class="card">
 
-    <section id="experience">
+          <h3><i class="fa-solid fa-brain"></i> Generative AI & Retrieval</h3>
 
-      <div class="container">
+          <div class="tags">
 
-        <div class="section-heading">
+            <span class="tag">RAG</span><span class="tag">Semantic Search</span>
 
-          <div>
+            <span class="tag">Hybrid Retrieval</span><span class="tag">Prompt Engineering</span>
 
-            <p class="eyebrow">Career journey</p>
+            <span class="tag">Agentic Workflows</span><span class="tag">LLMs</span>
 
-            <h2>Experience</h2>
+            <span class="tag">Embeddings</span><span class="tag">Vector Databases</span>
 
           </div>
 
-          <p>Working across enterprise AI engineering, application development, and technical experimentation.</p>
+        </article>
 
-        </div>
+        <article class="card">
 
-        <div class="experience-list">
+          <h3><i class="fa-brands fa-microsoft"></i> Azure AI</h3>
 
-          <article class="experience-card">
+          <div class="tags">
 
-            <div>
+            <span class="tag">Azure AI Search</span><span class="tag">Azure OpenAI</span>
 
-              <p class="experience-date">JAN 2026 — PRESENT</p>
+            <span class="tag">Indexers & Skillsets</span><span class="tag">Azure Cognitive Services</span>
 
-              <p class="experience-company">EY GDS Consulting</p>
-
-            </div>
-
-            <div class="experience-content">
-
-              <h3>Generative AI Engineer</h3>
-
-              <p class="team">EY GBS ET · Digital Product and Service · AI Team</p>
-
-              <p>
-
-                Contributing to enterprise GenAI applications, internal initiatives,
-
-                AI proof of concepts, and platform-oriented engineering efforts.
-
-                Exploring practical approaches to applying LLMs and agentic workflows.
-
-              </p>
-
-              <ul>
-
-                <li><strong>RAG applications:</strong> Working on RAG-heavy application modules and LLM-powered workflows.</li>
-
-                <li><strong>Agentic pipeline:</strong> Created an end-to-end agentic pipeline and coding framework for GitHub Copilot using a harness approach.</li>
-
-                <li><strong>POCs and innovation:</strong> Developing proof of concepts, testing new approaches, and exploring emerging AI capabilities.</li>
-
-                <li><strong>Internal initiatives:</strong> Contributing to internal AI initiatives and platform development efforts.</li>
-
-                <li><strong>Labs collaboration:</strong> Working with internal labs and exploring ideas for AI-enabled products and workflows.</li>
-
-                <li><strong>Application engineering:</strong> Building AI application components and workflows primarily with Python and Azure OpenAI.</li>
-
-              </ul>
-
-              <div class="tags" style="margin-top:20px">
-
-                <span class="tag">Python</span><span class="tag">Azure OpenAI</span>
-
-                <span class="tag">RAG</span><span class="tag">Agentic AI</span>
-
-                <span class="tag">GitHub Copilot</span><span class="tag">POCs</span>
-
-              </div>
-
-            </div>
-
-          </article>
-
-          <article class="experience-card">
-
-            <div>
-
-              <p class="experience-date">SEP 2024 — JAN 2026</p>
-
-              <p class="experience-company">UST Global</p>
-
-            </div>
-
-            <div class="experience-content">
-
-              <h3>AI Engineer</h3>
-
-              <p>
-
-                Contributed to software and AI-related engineering work, building
-
-                professional experience in application development, Python, and
-
-                AI-enabled solutions.
-
-              </p>
-
-              <div class="tags" style="margin-top:20px">
-
-                <span class="tag">Python</span><span class="tag">AI Engineering</span>
-
-                <span class="tag">Software Development</span>
-
-              </div>
-
-            </div>
-
-          </article>
-
-          <article class="experience-card">
-
-            <div>
-
-              <p class="experience-date">MAY 2023 — JUN 2023</p>
-
-              <p class="experience-company">Synthite Industries</p>
-
-            </div>
-
-            <div class="experience-content">
-
-              <h3>Technical Intern</h3>
-
-              <p>
-
-                Internship experience with exposure to technical workflows,
-
-                backend integrations, and automation scripts.
-
-              </p>
-
-            </div>
-
-          </article>
-
-          <article class="experience-card">
-
-            <div>
-
-              <p class="experience-date">AUG 2022 — JUN 2023</p>
-
-              <p class="experience-company">IEDC MITS Kochi</p>
-
-            </div>
-
-            <div class="experience-content">
-
-              <h3>Branding Lead</h3>
-
-              <p>
-
-                Led branding and outreach initiatives supporting student innovation
-
-                and entrepreneurship activities.
-
-              </p>
-
-            </div>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- Education -->
-
-    <section id="education">
-
-      <div class="container">
-
-        <div class="section-heading">
-
-          <div>
-
-            <p class="eyebrow">Academic background</p>
-
-            <h2>Education & certifications</h2>
+            <span class="tag">Azure Video Indexer</span><span class="tag">OCR</span>
 
           </div>
 
-        </div>
+        </article>
 
-        <div class="education-grid">
+        <article class="card">
 
-          <article class="education-card">
+          <h3><i class="fa-solid fa-code"></i> Software Engineering</h3>
 
-            <i class="fas fa-graduation-cap"></i>
+          <div class="tags">
 
-            <h3>B.Tech — Computer Science & Engineering</h3>
+            <span class="tag">Python</span><span class="tag">Java</span>
 
-            <p>APJ Abdul Kalam Technological University</p>
+            <span class="tag">FastAPI</span><span class="tag">REST APIs</span>
 
-            <p class="date">2020 — 2024 · CGPA: 7.5/10</p>
+            <span class="tag">Microservices</span><span class="tag">Docker</span>
 
-          </article>
-
-          <article class="education-card">
-
-            <i class="fas fa-school"></i>
-
-            <h3>Higher Secondary — Computer Science</h3>
-
-            <p>Mar Coorilose HSS</p>
-
-            <p class="date">2018 — 2020</p>
-
-          </article>
-
-          <article class="education-card">
-
-            <i class="fas fa-book-open"></i>
-
-            <h3>SSLC</h3>
-
-            <p>Mar Athanasius Memorial HSS</p>
-
-            <p class="date">2017 — 2018</p>
-
-          </article>
-
-          <article class="education-card">
-
-            <i class="fas fa-language"></i>
-
-            <h3>Business English Certificate</h3>
-
-            <p>Cambridge English</p>
-
-            <p class="date">June 2021</p>
-
-          </article>
-
-          <article class="education-card">
-
-            <i class="fas fa-code"></i>
-
-            <h3>MERN Full Stack</h3>
-
-            <p>ZeroPixels</p>
-
-            <p class="date">January 2024</p>
-
-          </article>
-
-          <article class="education-card">
-
-            <i class="fas fa-terminal"></i>
-
-            <h3>Django & Python</h3>
-
-            <p>ZeroPixels</p>
-
-            <p class="date">June 2023</p>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- Contact -->
-
-    <section id="contact">
-
-      <div class="container contact-layout">
-
-        <div class="contact-copy">
-
-          <p class="eyebrow">Get in touch</p>
-
-          <h2>Have an interesting AI problem?</h2>
-
-          <p>
-
-            I'm interested in GenAI engineering, agentic systems, RAG applications,
-
-            AI platform development, and thoughtful collaboration on challenging problems.
-
-          </p>
-
-          <a class="contact-email" href="mailto:aadithyakochupurackal@gmail.com">
-
-            aadithyakochupurackal@gmail.com
-
-          </a>
-
-          <div class="social-links">
-
-            <a href="https://github.com/adithyakochupurackal" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-
-            <a href="https://linkedin.com/in/adithya-krishna-in" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <span class="tag">CI/CD</span><span class="tag">Observability</span>
 
           </div>
 
-        </div>
+        </article>
 
-        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xovnozvl" method="POST">
+        <article class="card">
 
-          <div class="form-grid">
+          <h3><i class="fa-solid fa-database"></i> Data & Delivery</h3>
 
-            <div class="field">
+          <div class="tags">
 
-              <label for="name">Your name</label>
+            <span class="tag">Weaviate</span><span class="tag">PostgreSQL</span>
 
-              <input id="name" name="name" type="text" placeholder="Jane Smith" required>
+            <span class="tag">Document Intelligence</span><span class="tag">Unstructured Data</span>
 
-            </div>
+            <span class="tag">Cursor</span><span class="tag">Rapid Prototyping</span>
 
-            <div class="field">
-
-              <label for="email">Email address</label>
-
-              <input id="email" name="email" type="email" placeholder="jane@company.com" required>
-
-            </div>
-
-            <div class="field full">
-
-              <label for="subject">Subject</label>
-
-              <input id="subject" name="subject" type="text" placeholder="Let's discuss an opportunity" required>
-
-            </div>
-
-            <div class="field full">
-
-              <label for="message">Message</label>
-
-              <textarea id="message" name="message" placeholder="Tell me a little about what you have in mind..." required></textarea>
-
-            </div>
+            <span class="tag">POC to Production</span>
 
           </div>
 
-          <button class="btn btn-primary form-submit" id="submitBtn" type="submit">
-
-            Send message <i class="fas fa-arrow-right"></i>
-
-          </button>
-
-          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-
-          <p class="form-note">Your message will be sent through Formspree.</p>
-
-        </form>
-
-      </div>
-
-    </section>
-
-  </main>
-
-  <footer>
-
-    <div class="container footer-inner">
-
-      <p>© <span id="year"></span> Adithya Krishna. Built with curiosity.</p>
-
-      <div class="footer-links">
-
-        <a href="#home">Back to top ↑</a>
-
-        <a href="https://github.com/adithyakochupurackupurackal" target="_blank" rel="noopener">GitHub</a>
-
-        <a href="https://linkedin.com/in/adithya-krishna-in" target="_blank" rel="noopener">LinkedIn</a>
+        </article>
 
       </div>
 
     </div>
 
-  </footer>
+  </section>
 
-  <script>
+  <section class="content-section" id="projects">
 
-    // Current year
+    <div class="container">
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+      <div class="section-head">
 
-    // Mobile navigation
+        <div><p class="eyebrow">Selected work</p><h2>Projects & initiatives</h2></div>
 
-    const menuToggle = document.getElementById("menuToggle");
+        <p>Enterprise AI engineering, application prototypes, and projects exploring practical uses of LLMs.</p>
 
-    const navLinks = document.getElementById("navLinks");
+      </div>
 
-    menuToggle.addEventListener("click", () => {
+      <div class="project-grid">
 
-      const isOpen = navLinks.classList.toggle("open");
+        <article class="card project">
 
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
+          <div class="project-top"><span class="project-icon"><i class="fa-solid fa-magnifying-glass"></i></span><span class="project-number">01 / ENTERPRISE AI</span></div>
 
-      menuToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+          <h3>Enterprise RAG System</h3>
 
-      menuToggle.innerHTML = isOpen
+          <p>Built an Azure AI Search-based knowledge retrieval system using semantic and hybrid search, citations, and grounded question answering.</p>
 
-        ? '<i class="fas fa-xmark"></i>'
+          <div class="tags"><span class="tag">Azure AI Search</span><span class="tag">RAG</span><span class="tag">Azure OpenAI</span></div>
 
-        : '<i class="fas fa-bars"></i>';
+        </article>
+
+        <article class="card project">
+
+          <div class="project-top"><span class="project-icon"><i class="fa-solid fa-file-lines"></i></span><span class="project-number">02 / DOCUMENT AI</span></div>
+
+          <h3>Document Intelligence Pipeline</h3>
+
+          <p>Designed ingestion workflows for OCR, parsing, chunking, enrichment, metadata extraction and indexing of large document collections.</p>
+
+          <div class="tags"><span class="tag">OCR</span><span class="tag">Indexers</span><span class="tag">Skillsets</span></div>
+
+        </article>
+
+        <article class="card project">
+
+          <div class="project-top"><span class="project-icon"><i class="fa-solid fa-comments"></i></span><span class="project-number">03 / CONVERSATIONAL AI</span></div>
+
+          <h3>Context-Aware Chatbot</h3>
+
+          <p>Developed a multi-turn chatbot with retrieval grounding, session memory, prompt tuning, and explainable responses.</p>
+
+          <div class="tags"><span class="tag">LLMs</span><span class="tag">RAG</span><span class="tag">Python</span></div>
+
+        </article>
+
+        <article class="card project">
+
+          <div class="project-top"><span class="project-icon"><i class="fa-solid fa-video"></i></span><span class="project-number">04 / AUTOMATION</span></div>
+
+          <h3>Video-to-SOP Pipeline</h3>
+
+          <p>Created an AI pipeline to convert video content into structured SOP documentation using transcription and automated processing workflows.</p>
+
+          <div class="tags"><span class="tag">Azure Video Indexer</span><span class="tag">Transcription</span><span class="tag">Automation</span></div>
+
+        </article>
+
+        <article class="card project">
+
+          <div class="project-top"><span class="project-icon"><i class="fa-solid fa-diagram-project"></i></span><span class="project-number">05 / AGENTIC AI</span></div>
+
+          <h3>Agentic Coding Harness</h3>
+
+          <p>Created an end-to-end agentic pipeline and coding framework for GitHub Copilot using a harness-based approach.</p>
+
+          <div class="tags"><span class="tag">Agentic Workflows</span><span class="tag">GitHub Copilot</span><span class="tag">AI Engineering</span></div>
+
+        </article>
+
+        <article class="card project">
+
+          <div class="project-top"><span class="project-icon"><i class="fa-solid fa-flask"></i></span><span class="project-number">06 / INNOVATION</span></div>
+
+          <h3>Internal AI Prototypes</h3>
+
+          <p>Exploring new GenAI approaches through POCs, internal initiatives, collaboration with labs, and platform-oriented development.</p>
+
+          <div class="tags"><span class="tag">Prototyping</span><span class="tag">Innovation</span><span class="tag">Platform Initiatives</span></div>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="content-section" id="experience">
+
+    <div class="container">
+
+      <div class="section-head">
+
+        <div><p class="eyebrow">Career journey</p><h2>Experience</h2></div>
+
+        <p>Building enterprise AI capabilities across retrieval, orchestration, backend services, and product-focused engineering.</p>
+
+      </div>
+
+      <div class="experience-list">
+
+        <article class="experience">
+
+          <div>
+
+            <p class="experience-date">JAN 2026 — PRESENT</p>
+
+            <p class="company">EY GDS · Kochi</p>
+
+          </div>
+
+          <div>
+
+            <h3>Generative AI Engineer</h3>
+
+            <p class="team">EY GBS ET · Digital Product and Service · AI Team</p>
+
+            <p>Developing enterprise GenAI capabilities across RAG-heavy applications, AI workflows, backend services, and internal innovation initiatives.</p>
+
+            <ul>
+
+              <li><strong>Enterprise RAG:</strong> Built RAG systems using Azure AI Search with semantic and vector-based retrieval to deliver grounded answers.</li>
+
+              <li><strong>Document ingestion:</strong> Designed pipelines processing 1,600+ documents with parsing, chunking, indexing, and enrichment.</li>
+
+              <li><strong>Document intelligence:</strong> Configured Azure AI Search indexers and skillsets for OCR, document processing, metadata extraction, and searchable content generation.</li>
+
+              <li><strong>Azure AI services:</strong> Integrated Azure Cognitive Services to improve extraction quality, retrieval relevance, and document workflows.</li>
+
+              <li><strong>Backend engineering:</strong> Developed Python-based backend services and APIs for GenAI applications.</li>
+
+              <li><strong>Chatbot experiences:</strong> Contributed to user-facing chatbot experiences with retrieval, citations, and grounded responses.</li>
+
+              <li><strong>Agentic framework:</strong> Created an end-to-end agentic pipeline and coding framework for GitHub Copilot using a harness-based approach.</li>
+
+              <li><strong>Innovation:</strong> Worked on POCs, new technical approaches, internal initiatives, platform development, and collaboration with labs.</li>
+
+              <li><strong>AI-assisted development:</strong> Used tools such as Cursor and rapid prototyping workflows to accelerate feature and POC cycles.</li>
+
+            </ul>
+
+            <div class="tags">
+
+              <span class="tag">Python</span><span class="tag">Azure AI Search</span>
+
+              <span class="tag">Azure OpenAI</span><span class="tag">RAG</span>
+
+              <span class="tag">GitHub Copilot</span><span class="tag">Agentic AI</span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <article class="experience">
+
+          <div>
+
+            <p class="experience-date">OCT 2024 — DEC 2025</p>
+
+            <p class="company">UST Global · Kochi</p>
+
+          </div>
+
+          <div>
+
+            <h3>AI Engineer</h3>
+
+            <p>Worked on GenAI and software engineering initiatives, developing retrieval pipelines, agentic workflows, and AI-enabled application services.</p>
+
+            <ul>
+
+              <li><strong>RAG pipelines:</strong> Developed retrieval-augmented generation pipelines using LangChain, embeddings, and the Weaviate vector database.</li>
+
+              <li><strong>Agentic workflows:</strong> Built workflows for task decomposition, orchestration, and human-in-the-loop validation.</li>
+
+              <li><strong>Video-to-document automation:</strong> Designed pipelines using Azure Video Indexer and transcription workflows.</li>
+
+              <li><strong>Backend services:</strong> Implemented FastAPI microservices and supported CI/CD delivery.</li>
+
+              <li><strong>Production engineering:</strong> Worked on inference performance, maintainability, reliability, and usability of product-facing GenAI solutions.</li>
+
+            </ul>
+
+            <div class="tags">
+
+              <span class="tag">Python</span><span class="tag">LangChain</span>
+
+              <span class="tag">Weaviate</span><span class="tag">FastAPI</span>
+
+              <span class="tag">Azure Video Indexer</span><span class="tag">CI/CD</span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <article class="experience">
+
+          <div>
+
+            <p class="experience-date">AUG 2022 — JUN 2023</p>
+
+            <p class="company">IEDC MITS Kochi</p>
+
+          </div>
+
+          <div>
+
+            <h3>Branding Lead</h3>
+
+            <p>Led branding and outreach campaigns, coordinated cross-functional event execution, and supported promotion planning and stakeholder communication for student initiatives.</p>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="content-section" id="education">
+
+    <div class="container">
+
+      <div class="section-head">
+
+        <div><p class="eyebrow">Background</p><h2>Education & certifications</h2></div>
+
+      </div>
+
+      <div class="education-grid">
+
+        <article class="card education">
+
+          <i class="fa-solid fa-graduation-cap"></i>
+
+          <h3>B.Tech in Computer Engineering</h3>
+
+          <p>APJ Abdul Kalam Technological University</p>
+
+          <p class="edu-meta">2020–2024 · 75.55%</p>
+
+        </article>
+
+        <article class="card education">
+
+          <i class="fa-solid fa-school"></i>
+
+          <h3>Higher Secondary · Computer Science</h3>
+
+          <p>Mar Coorilose HSS, Pattimatom</p>
+
+          <p class="edu-meta">2018–2020 · 94.55%</p>
+
+        </article>
+
+        <article class="card education">
+
+          <i class="fa-solid fa-book-open"></i>
+
+          <h3>SSLC</h3>
+
+          <p>Mar Athanasius Memorial HSS, Puthencruz</p>
+
+          <p class="edu-meta">2017–2018 · 100%</p>
+
+        </article>
+
+      </div>
+
+      <div style="margin-top:24px">
+
+        <p class="eyebrow" style="margin-bottom:14px">Credentials</p>
+
+        <div class="cert-list">
+
+          <article class="cert">
+
+            <i class="fa-solid fa-cloud"></i>
+
+            <div><h3>Oracle Cloud Infrastructure AI Foundations Associate</h3><p>Oracle · AI foundations</p></div>
+
+          </article>
+
+          <article class="cert">
+
+            <i class="fa-solid fa-brain"></i>
+
+            <div><h3>Oracle Cloud Infrastructure Generative AI Professional</h3><p>Oracle · Generative AI</p></div>
+
+          </article>
+
+          <article class="cert">
+
+            <i class="fa-solid fa-language"></i>
+
+            <div><h3>Business English Certificate</h3><p>Cambridge English · June 2021</p></div>
+
+          </article>
+
+          <article class="cert">
+
+            <i class="fa-solid fa-code"></i>
+
+            <div><h3>MERN Full Stack</h3><p>ZeroPixels · January 2024</p></div>
+
+          </article>
+
+          <article class="cert">
+
+            <i class="fa-brands fa-python"></i>
+
+            <div><h3>Django and Python</h3><p>ZeroPixels · June 2023</p></div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="content-section" id="contact">
+
+    <div class="container contact-grid">
+
+      <div class="contact-copy">
+
+        <p class="eyebrow">Contact</p>
+
+        <h2>Let's build something meaningful.</h2>
+
+        <p>Interested in enterprise AI, GenAI engineering, agentic workflows, and useful products. Feel free to reach out.</p>
+
+        <p><a href="mailto:aadithyakochupurackal@gmail.com">aadithyakochupurackal@gmail.com</a></p>
+
+        <div class="socials">
+
+          <a href="https://github.com/adithyakochupurackal" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+
+          <a href="https://linkedin.com/in/adithya-krishna-in" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+
+        </div>
+
+      </div>
+
+      <form id="contactForm" action="https://formspree.io/f/xovnozvl" method="POST">
+
+        <div class="form-row">
+
+          <div class="field">
+
+            <label for="name">Your name</label>
+
+            <input id="name" name="name" autocomplete="name" placeholder="Jane Smith" required>
+
+          </div>
+
+          <div class="field">
+
+            <label for="email">Email address</label>
+
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="jane@company.com" required>
+
+          </div>
+
+        </div>
+
+        <div class="field">
+
+          <label for="subject">Subject</label>
+
+          <input id="subject" name="subject" placeholder="A role, project, or quick hello" required>
+
+        </div>
+
+        <div class="field">
+
+          <label for="message">Message</label>
+
+          <textarea id="message" name="message" placeholder="Tell me what you have in mind..." required></textarea>
+
+        </div>
+
+        <button class="btn primary" id="submitBtn" type="submit">Send message <i class="fa-solid fa-arrow-right"></i></button>
+
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+
+      </form>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+
+  <div class="container footer-inner">
+
+    <span>© <span id="year"></span> Adithya Krishna. Built with curiosity and code.</span>
+
+    <div class="footer-links">
+
+      <a href="#home">Back to top ↑</a>
+
+      <a href="mailto:aadithyakochupurackal@gmail.com">Email</a>
+
+      <a href="https://github.com/adithyakochupurackal" target="_blank" rel="noopener noreferrer">GitHub</a>
+
+    </div>
+
+  </div>
+
+</footer>
+
+<script>
+
+(() => {
+
+  const root = document.documentElement;
+
+  const themeToggle = document.getElementById("themeToggle");
+
+  const menuToggle = document.getElementById("menuToggle");
+
+  const navLinks = document.getElementById("navLinks");
+
+  const form = document.getElementById("contactForm");
+
+  const submitBtn = document.getElementById("submitBtn");
+
+  const formStatus = document.getElementById("formStatus");
+
+  // Theme toggle
+
+  let theme = "dark";
+
+  try { theme = localStorage.getItem("portfolio-theme") || "dark"; } catch (_) {}
+
+  function setTheme(next) {
+
+    root.dataset.theme = next;
+
+    themeToggle.innerHTML = next === "light"
+
+      ? '<i class="fa-regular fa-sun"></i>'
+
+      : '<i class="fa-regular fa-moon"></i>';
+
+    themeToggle.setAttribute("aria-label", next === "light" ? "Switch to dark theme" : "Switch to light theme");
+
+    try { localStorage.setItem("portfolio-theme", next); } catch (_) {}
+
+  }
+
+  setTheme(theme === "light" ? "light" : "dark");
+
+  themeToggle.addEventListener("click", () => setTheme(root.dataset.theme === "dark" ? "light" : "dark"));
+
+  // Mobile navigation
+
+  menuToggle.addEventListener("click", () => {
+
+    const open = navLinks.classList.toggle("open");
+
+    menuToggle.setAttribute("aria-expanded", String(open));
+
+    menuToggle.innerHTML = open
+
+      ? '<i class="fa-solid fa-xmark"></i>'
+
+      : '<i class="fa-solid fa-bars"></i>';
+
+  });
+
+  navLinks.querySelectorAll("a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+      navLinks.classList.remove("open");
+
+      menuToggle.setAttribute("aria-expanded", "false");
+
+      menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
 
     });
 
-    navLinks.querySelectorAll("a").forEach(link => {
+  });
 
-      link.addEventListener("click", () => {
+  // Scroll reveal
 
-        navLinks.classList.remove("open");
+  const revealItems = document.querySelectorAll(".card, .experience, .cert");
 
-        menuToggle.setAttribute("aria-expanded", "false");
+  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 
-        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    const observer = new IntersectionObserver((entries, obs) => {
 
-      });
+      entries.forEach(entry => {
 
-    });
+        if (entry.isIntersecting) {
 
-    // Theme toggle with local persistence
+          entry.target.classList.add("visible");
 
-    const themeToggle = document.getElementById("themeToggle");
-
-    const savedTheme = localStorage.getItem("portfolio-theme");
-
-    if (savedTheme === "light") {
-
-      document.documentElement.setAttribute("data-theme", "light");
-
-      themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-
-    }
-
-    themeToggle.addEventListener("click", () => {
-
-      const isLight = document.documentElement.getAttribute("data-theme") === "light";
-
-      if (isLight) {
-
-        document.documentElement.removeAttribute("data-theme");
-
-        localStorage.setItem("portfolio-theme", "dark");
-
-        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-
-      } else {
-
-        document.documentElement.setAttribute("data-theme", "light");
-
-        localStorage.setItem("portfolio-theme", "light");
-
-        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-
-      }
-
-    });
-
-    // Reveal cards when they enter the viewport
-
-    const revealElements = document.querySelectorAll(
-
-      ".skill-group, .project-card, .experience-card, .education-card"
-
-    );
-
-    if ("IntersectionObserver" in window) {
-
-      const observer = new IntersectionObserver((entries, obs) => {
-
-        entries.forEach(entry => {
-
-          if (entry.isIntersecting) {
-
-            entry.target.classList.add("visible");
-
-            obs.unobserve(entry.target);
-
-          }
-
-        });
-
-      }, { threshold: 0.08 });
-
-      revealElements.forEach(el => {
-
-        el.classList.add("reveal");
-
-        observer.observe(el);
-
-      });
-
-    } else {
-
-      revealElements.forEach(el => el.classList.add("visible"));
-
-    }
-
-    // Contact form submission through Formspree
-
-    const contactForm = document.getElementById("contactForm");
-
-    const submitBtn = document.getElementById("submitBtn");
-
-    const formStatus = document.getElementById("formStatus");
-
-    contactForm.addEventListener("submit", async event => {
-
-      event.preventDefault();
-
-      formStatus.textContent = "";
-
-      submitBtn.disabled = true;
-
-      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-
-      try {
-
-        const response = await fetch(contactForm.action, {
-
-          method: "POST",
-
-          body: new FormData(contactForm),
-
-          headers: { "Accept": "application/json" }
-
-        });
-
-        if (response.ok) {
-
-          formStatus.textContent = "Message sent successfully. Thank you for reaching out!";
-
-          contactForm.reset();
-
-        } else {
-
-          formStatus.textContent = "Unable to send right now. Please email me directly.";
+          obs.unobserve(entry.target);
 
         }
 
-      } catch (error) {
+      });
 
-        formStatus.textContent = "A network error occurred. Please email me directly.";
+    }, { threshold: .1 });
 
-      } finally {
+    revealItems.forEach(item => {
 
-        submitBtn.disabled = false;
+      item.classList.add("reveal");
 
-        submitBtn.innerHTML = 'Send message <i class="fas fa-arrow-right"></i>';
-
-      }
+      observer.observe(item);
 
     });
 
-  </script>
+  } else {
+
+    revealItems.forEach(item => item.classList.add("visible"));
+
+  }
+
+  // Active navigation state
+
+  const sections = [...navLinks.querySelectorAll("a")]
+
+    .map(a => document.querySelector(a.getAttribute("href")))
+
+    .filter(Boolean);
+
+  if ("IntersectionObserver" in window) {
+
+    const navObserver = new IntersectionObserver(entries => {
+
+      entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+          navLinks.querySelectorAll("a").forEach(a => {
+
+            a.classList.toggle("active", a.getAttribute("href") === "#" + entry.target.id);
+
+          });
+
+        }
+
+      });
+
+    }, { rootMargin: "-25% 0px -65% 0px" });
+
+    sections.forEach(section => navObserver.observe(section));
+
+  }
+
+  // Contact form using the existing Formspree endpoint
+
+  form.addEventListener("submit", async event => {
+
+    event.preventDefault();
+
+    formStatus.className = "form-status";
+
+    formStatus.textContent = "";
+
+    if (!form.reportValidity()) return;
+
+    submitBtn.disabled = true;
+
+    submitBtn.innerHTML = 'Sending… <i class="fa-solid fa-spinner fa-spin"></i>';
+
+    try {
+
+      const response = await fetch(form.action, {
+
+        method: "POST",
+
+        headers: { "Accept": "application/json" },
+
+        body: new FormData(form)
+
+      });
+
+      if (!response.ok) throw new Error("Submission failed");
+
+      formStatus.textContent = "Thanks — your message has been sent.";
+
+      formStatus.classList.add("success");
+
+      form.reset();
+
+    } catch (_) {
+
+      formStatus.textContent = "Could not send right now. Please email me directly.";
+
+      formStatus.classList.add("error");
+
+    } finally {
+
+      submitBtn.disabled = false;
+
+      submitBtn.innerHTML = 'Send message <i class="fa-solid fa-arrow-right"></i>';
+
+    }
+
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+})();
+
+</script>
 
 </body>
 
